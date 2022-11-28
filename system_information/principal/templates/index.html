@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Información</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+
+    <link rel="stylesheet" href="{% static 'vendors/iconly/bold.css' %}">
+
+    <link rel="stylesheet" href="{% static 'vendors/perfect-scrollbar/perfect-scrollbar.css' %}">
+    <link rel="stylesheet" href="{% static 'vendors/bootstrap-icons/bootstrap-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/app.css' %}">
+    <link rel="shortcut icon" href="{% static 'images/favicon.svg' %}" type="image/x-icon">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!-- Container wrapper -->
+        <div class="container-fluid">
+        <!-- Toggle button -->
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-mdb-toggle="collapse"
+                data-mdb-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
+            <i class="fas fa-bars"></i>
+            </button>
+  
+            <!-- Collapsible wrapper -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- Navbar brand -->
+                <a class="navbar-brand mt-2 mt-lg-0" href="#">
+                    <img
+                        src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
+                        height="15"
+                        alt="MDB Logo"
+                        loading="lazy"
+                    />
+                </a> 
+            </div>
+            <!-- Collapsible wrapper -->
+  
+            <!-- Right elements -->
+            <div class="d-flex align-items-center">
+            <!-- Icon -->
+                <a class="text-reset me-3" href="#">
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
+  
+                <!-- Notifications -->
+                <div class="btn-group mb-1">
+                    <div class="dropdown dropdown-color-icon">
+                        <button class="btn btn-primary dropdown-toggle" type="button"
+                            id="dropdownMenuButtonEmoji" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <span Class="me-50"><i class="bi bi-bell-fill"></i></span>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButtonEmoji">
+                            <a class="dropdown-item" href="#"><span
+                                    class="dropdown-item-emoji"><i class="bi bi-app-indicator"></i></span>
+                                Notificación 1</a>
+                            <a class="dropdown-item" href="#"><span
+                                    class="dropdown-item-emoji"><i class="bi bi-app-indicator"></i></span>
+                                Notificación 2 </a>
+                            <a class="dropdown-item" href="#"><span
+                                    class="dropdown-item-emoji"><i class="bi bi-app-indicator"></i></span>
+                                Notificación 3</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="btn-group mb-1">
+                    <div class="dropdown dropdown-color-icon">
+                        <button class="btn btn-primary dropdown-toggle" type="button"
+                            id="dropdownMenuButtonEmoji" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <span Class="me-50"><i class="bi bi-info-circle-fill"></i></span>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButtonEmoji">
+                            <a class="dropdown-item" href="#" data-bs-toggle="modal"
+                            data-bs-target="#acerca_plataforma"><span
+                                    class="dropdown-item-emoji"><i class="bi bi-info-square-fill"></i></span>
+                                Acerca de ésta Plataforma</a>
+                            <a class="dropdown-item" href="#"><span
+                                    class="dropdown-item-emoji"><i class="bi bi-info-square"></i></span>
+                                Acerca de <strong>arbeSoolutions</strong></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="btn-group mb-1">
+                    <div class="dropdown dropdown-color-icon">
+                        <button class="btn btn-primary dropdown-toggle" type="button"
+                            id="dropdownMenuButtonEmoji" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <span Class="me-50"><i class="bi bi-emoji-laughing-fill"></i></span>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButtonEmoji">
+                            <a class="dropdown-item" href="#"><span
+                                    class="dropdown-item-emoji"><i class="bi bi-emoji-laughing-fill"></i></span>
+                                Mi Perfil</a>
+                            <a class="dropdown-item" href="{% url 'login' %}"><span
+                                    class="dropdown-item-emoji"><i class="bi bi-box-arrow-right"></i></span>
+                                Cerrar Sesión</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Right elements -->
+        </div>
+    <!-- Container wrapper -->
+    </nav>
+    <!-- Navbar -->
+
+    <div class="modal fade text-left" id="acerca_plataforma" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="myModalLabel1">Acerca de ésta Plataforma</h5>
+                    <button type="button" class="close rounded-pill"
+                        data-bs-dismiss="modal" aria-label="Close">
+                        <i data-feather="x"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Bonbon caramels muffin. Chocolate bar oat cake cookie pastry
+                        dragée pastry.
+                        Carrot cake
+                        chocolate tootsie roll chocolate bar candy canes biscuit.
+
+                        Gummies bonbon apple pie fruitcake icing biscuit apple pie
+                        jelly-o sweet
+                        roll. Toffee sugar
+                        plum sugar plum jelly-o jujubes bonbon dessert carrot cake.
+                        Cookie dessert
+                        tart muffin topping
+                        donut icing fruitcake. Sweet roll cotton candy dragée danish
+                        Candy canes
+                        chocolate bar cookie.
+                        Gingerbread apple pie oat cake. Carrot cake fruitcake bear claw.
+                        Pastry
+                        gummi bears
+                        marshmallow jelly-o.
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col" style="align-items: center; display: flex; height: 100px; justify-content: center; width: 200px"><img src="{% static 'images/tech/django-logo.png' %}" width="100%"></div>
+                        <div class="col" style="align-items: center; display: flex; height: 100px; justify-content: center; width: 200px"><img src="{% static 'images/tech/python-logo.png' %}" width="100%"></div>
+                        <div class="col" style="align-items: center; display: flex; height: 100px; justify-content: center; width: 200px"><img src="{% static 'images/tech/postgresql-logo.png' %}" width="100%"></div>
+                        <div class="col" style="align-items: center; display: flex; height: 100px; justify-content: center; width: 200px"><img src="{% static 'images/tech/logo-google-cloud.png' %}" width="100%"></div>
+                    </div>
+                </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn" data-bs-dismiss="modal">
+                        <i class="bx bx-x d-block d-sm-none"></i>
+                        <span class="d-none d-sm-block">Cerrar</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="app">
+        <div id="sidebar" class="active">
+            <div class="sidebar-wrapper active">
+                <div class="sidebar-header">
+                    <div class="d-flex justify-content-between">
+                        <div class="logo">
+                            <a href="#"><img src="{% static 'images/logo/logo.png' %}" alt="Logo" srcset=""></a>
+                        </div>
+                        <div class="toggler">
+                            <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="sidebar-menu">
+                    <ul class="menu">
+                        <li class="sidebar-title">Menú</li>
+
+                        <li class="sidebar-item active ">
+                            <a href="{% url 'dashboard' %}" class='sidebar-link'>
+                                <i class="bi bi-grid-fill"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-title">Aplicaciones</li>
+
+                        <li class="sidebar-item  has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i class="bi bi-briefcase-fill"></i>
+                                <span>Administración</span>
+                            </a>
+                            <ul class="submenu ">
+                                <li class="sidebar-item  has-sub">
+                                    <a href="#" class='sidebar-link'>
+                                        <i class="bi bi-shop"></i>
+                                        <span>POS</span>
+                                    </a>
+                                    <ul class="submenu ">
+                                        <li class="submenu-item ">
+                                            <a href="#">Caja</a>
+                                        </li>
+                                        <li class="submenu-item ">
+                                            <a href="#">Proveedores</a>
+                                        </li>
+                                        <li class="submenu-item ">
+                                            <a href="#">Clientes</a>
+                                        </li>
+                                        <li class="submenu-item ">
+                                            <a href="#">Productos</a>
+                                        </li>
+                                        <li class="submenu-item ">
+                                            <a href="#">Compras</a>
+                                        </li>
+                                        <li class="submenu-item ">
+                                            <a href="#">Ventas</a>
+                                        </li>
+                                        <li class="submenu-item ">
+                                            <a href="#">Gastos</a>
+                                        </li>
+                                        <li class="submenu-item ">
+                                            <a href="#">Pedidos</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="submenu-item ">
+                                    <a href="#">Cartera</a>
+                                </li>
+                                <li class="submenu-item ">
+                                    <a href="#">Presupuesto</a>
+                                </li>
+                                <li class="submenu-item ">
+                                    <a href="#">Proyectos</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="sidebar-item  has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i class="bi bi-image-alt"></i>
+                                <span>Agroindustria</span>
+                            </a>
+                            <ul class="submenu ">
+                                <li class="submenu-item ">
+                                    <a href="#">Ganadería</a>
+                                </li>
+                                <li class="submenu-item ">
+                                    <a href="#">Porcicultura</a>
+                                </li>
+                                <li class="submenu-item ">
+                                    <a href="#">Avicultura</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="sidebar-item  has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i class="bi bi-egg-fried"></i>
+                                <span>Gastronomía</span>
+                            </a>
+                            <ul class="submenu ">
+                                <li class="submenu-item ">
+                                    <a href="#">Restaurantes</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="sidebar-title">Utilidades</li>
+
+                        <li class="sidebar-item  has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i class="bi bi-tools"></i>
+                                <span>Herramientas</span>
+                            </a>
+                            <ul class="submenu ">
+                                <li class="submenu-item ">
+                                    <a href="#">Calculadora</a>
+                                </li>
+                                <li class="submenu-item ">
+                                    <a href="#">Convertidor de Moneda</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="sidebar-item  ">
+                            <a href="#" class='sidebar-link'>
+                                <i class="bi bi-calendar-week"></i>
+                                <span>Calendario</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item  has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i class="bi bi-signpost-split-fill"></i>
+                                <span>Mi Oficina</span>
+                            </a>
+                            <ul class="submenu ">
+                                <li class="submenu-item ">
+                                    <a href="#">Mi Agenda</a>
+                                </li>
+                                <li class="submenu-item ">
+                                    <a href="#">Mi Correo</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="sidebar-title">Soporte</li>
+
+                        <li class="sidebar-item  ">
+                            <a href="#" class='sidebar-link'>
+                                <i class="bi bi-life-preserver"></i>
+                                <span>Documentación</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item  ">
+                            <a href="#" class='sidebar-link'>
+                                <i class="bi bi-eyeglasses"></i>
+                                <span>Mesa de Servicio</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item  ">
+                            <a href="#" class='sidebar-link'>
+                                <i class="bi bi-cash"></i>
+                                <span>Pagos</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+                <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
+            </div>
+        </div>
+
+        <div id="main">
+            <header class="mb-3">
+                <a href="#" class="burger-btn d-block d-xl-none">
+                    <i class="bi bi-justify fs-3"></i>
+                </a>
+            </header>
+
+            <div class="page-heading">
+                <h3>Dashboard</h3>
+            </div>
+            
+            {% block content %}
+
+            {% endblock %}
+
+            <footer>
+                <div class="footer clearfix mb-0 text-muted">
+                    <div class="float-start">
+                        <p>2022 &copy; arbeSoolutions</p>
+                    </div>
+                    <div class="float-end">
+                        <p>Created with <span class="text-danger"><i class="bi bi-heart-fill"></i></span> by <a
+                                href="#">arbeSoolutions</a></p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="{% static 'vendors/perfect-scrollbar/perfect-scrollbar.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+
+    <script src="{% static 'vendors/apexcharts/apexcharts.js' %}"></script>
+    <script src="{% static 'js/pages/dashboard.js' %}"></script>
+
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>
