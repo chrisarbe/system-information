@@ -16,9 +16,16 @@
     <link rel="stylesheet" href="{% static 'vendors/bootstrap-icons/bootstrap-icons.css' %}">
     <link rel="stylesheet" href="{% static 'css/app.css' %}">
     <link rel="shortcut icon" href="{% static 'images/favicon.svg' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'vendors/toastify/toastify.css' %}">
+    <link rel="stylesheet" href="{% static 'vendors/sweetalert2/sweetalert2.min.css' %}">
 </head>
 
 <body>
+    <script src="{% static 'vendors/toastify/toastify.js' %}"></script>
+    <script src="{% static 'js/extensions/toastify.js' %}"></script>
+    <script src="{% static 'js/extensions/sweetalert2.js' %}"></script>
+    <script src="{% static 'vendors/sweetalert2/sweetalert2.all.min.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <!-- Container wrapper -->
@@ -190,11 +197,50 @@
                     <ul class="menu">
                         <li class="sidebar-title">Menú</li>
 
-                        <li class="sidebar-item active ">
+                        <li id="menu_dashboard" class="sidebar-item">
                             <a href="{% url 'dashboard' %}" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Dashboard</span>
                             </a>
+                        </li>
+                        <li class="sidebar-item  has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i class="bi bi-collection-fill"></i>
+                                <span>Datos Maestros</span>
+                            </a>
+                            <ul id="menu_categorizacion" class="submenu">
+                                <li class="sidebar-item  has-sub">
+                                    <a href="#" class='sidebar-link'>
+                                        <i class="bi bi-tags-fill"></i>
+                                        <span>Categorización</span>
+                                    </a>
+                                    <ul id="menu_categorizacion_2" class="submenu">
+                                        <li id="menu_tipo_documento" class="submenu-item">
+                                            <a href="{% url 'tipo_documento' %}">Tipo de Documento</a>
+                                        </li>
+                                        <li class="submenu-item ">
+                                            <a href="#">Tipo de Proveedor</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="sidebar-item  has-sub">
+                                    <a href="#" class='sidebar-link'>
+                                        <i class="bi bi-geo-fill"></i>
+                                        <span>Geografía</span>
+                                    </a>
+                                    <ul class="submenu ">
+                                        <li class="submenu-item ">
+                                            <a href="#">Pais</a>
+                                        </li>
+                                        <li class="submenu-item ">
+                                            <a href="#">Departamento</a>
+                                        </li>
+                                        <li class="submenu-item ">
+                                            <a href="#">Municipio</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
                         </li>
 
                         <li class="sidebar-title">Aplicaciones</li>
@@ -215,7 +261,7 @@
                                             <a href="#">Caja</a>
                                         </li>
                                         <li class="submenu-item ">
-                                            <a href="#">Proveedores</a>
+                                            <a href="{% url 'proveedores' %}">Proveedores</a>
                                         </li>
                                         <li class="submenu-item ">
                                             <a href="#">Clientes</a>
@@ -283,28 +329,6 @@
 
                         <li class="sidebar-item  has-sub">
                             <a href="#" class='sidebar-link'>
-                                <i class="bi bi-tools"></i>
-                                <span>Herramientas</span>
-                            </a>
-                            <ul class="submenu ">
-                                <li class="submenu-item ">
-                                    <a href="#">Calculadora</a>
-                                </li>
-                                <li class="submenu-item ">
-                                    <a href="#">Convertidor de Moneda</a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="sidebar-item  ">
-                            <a href="#" class='sidebar-link'>
-                                <i class="bi bi-calendar-week"></i>
-                                <span>Calendario</span>
-                            </a>
-                        </li>
-
-                        <li class="sidebar-item  has-sub">
-                            <a href="#" class='sidebar-link'>
                                 <i class="bi bi-signpost-split-fill"></i>
                                 <span>Mi Oficina</span>
                             </a>
@@ -315,7 +339,17 @@
                                 <li class="submenu-item ">
                                     <a href="#">Mi Correo</a>
                                 </li>
+                                <li class="submenu-item ">
+                                    <a href="#">Mis Herramientas</a>
+                                </li>
                             </ul>
+                        </li>
+
+                        <li class="sidebar-item  ">
+                            <a href="#" class='sidebar-link'>
+                                <i class="bi bi-calendar-week"></i>
+                                <span>Calendario</span>
+                            </a>
                         </li>
 
                         <li class="sidebar-title">Soporte</li>
@@ -355,7 +389,22 @@
             </header>
 
             <div class="page-heading">
-                <h3>Dashboard</h3>
+                <div class="page-title">
+                    <div class="row">
+                        <div class="col-12 col-md-6 order-md-1 order-last">
+                            <h3>{{ title }}</h3>
+                            <p class="text-subtitle text-muted">{{ subtitle }}</p>
+                        </div>
+                        <!-- <div class="col-12 col-md-6 order-md-2 order-first">
+                            <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="index.html">{{ title }}</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">DataTable</li> 
+                                </ol>
+                            </nav>
+                        </div> -->
+                    </div>
+                </div>
             </div>
             
             {% block content %}
@@ -382,6 +431,7 @@
     <script src="{% static 'js/pages/dashboard.js' %}"></script>
 
     <script src="{% static 'js/main.js' %}"></script>
+    {% block javascripts %}{% endblock javascripts %}
 </body>
 
 </html>

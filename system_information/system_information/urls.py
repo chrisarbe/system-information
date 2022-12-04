@@ -23,4 +23,10 @@ urlpatterns = [
     path('dashboard/', views.dashboard, name='dashboard'),
     path('login/', views.login_user, name='login'),
     path('logout/', views.signout, name='logout'),
+    path('proveedores/', views.proveedores, name='proveedores'),
+    path('tipo_documento/', views.tipo_documento, name='tipo_documento'),
+    path('tipo_documento/agregar/', views.tipo_documento_agregar, name='tipo_documento_agregar'),
+    path('tipo_documento/ver/', views.tipo_documento_ver, name='tipo_documento_ver'),
+    path('tipo_documento/editar/', views.tipo_documento_editar, name='tipo_documento_editar'),
+    path('tipo_documento/borrar/', views.tipo_documento_borrar, name='tipo_documento_borrar'),
 ]
