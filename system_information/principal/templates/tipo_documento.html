@@ -86,10 +86,8 @@
                                             Acciones
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-end">
-                                            <a class="dropdown-item active" href="#" onclick="tipo_documento_ver('{{x.id}}')" data-bs-toggle="modal"
-                                            data-bs-target="#ver_tipo_documento">Ver</a>
-                                            <a class="dropdown-item" href="#" onclick="tipo_documento_editar('{{x.id}}')" data-bs-toggle="modal"
-                                            data-bs-target="#editar_tipo_documento">Editar</a>
+                                            <a class="dropdown-item" href="#" onclick="tipo_documento_ver('{{x.id}}')">Ver</a>
+                                            <a class="dropdown-item" href="#" onclick="tipo_documento_editar('{{x.id}}')">Editar</a>
                                             <a class="dropdown-item" href="#" onclick="tipo_documento_borrar('{{x.id}}')">Borrar</a>
                                         </div>
                                         <!-- Modal Ver Tipo de Documento -->
@@ -185,6 +183,12 @@
 </div>
 {% block javascripts %}
     <script src="{% static 'js/maestros/tipo_documento.js' %}"></script>
+    <script src="{% static 'vendors/simple-datatables/simple-datatables.js' %}"></script>
+    <script>
+        // Simple Datatable
+        let table1 = document.querySelector('#table1');
+        let dataTable = new simpleDatatables.DataTable(table1);
+    </script>
 {% endblock javascripts %}
 
 

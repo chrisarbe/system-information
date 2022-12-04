@@ -43,7 +43,9 @@ function tipo_documento_ver(pk) {
         success: function (data) {
             $("#nombre_ver").val(data[0].fields.nombre);
         }
-    });
+    }).always(function() {
+        $('#ver_tipo_documento').modal('show');
+       });
 }
 
 function tipo_documento_editar(pk) {
@@ -59,50 +61,74 @@ function tipo_documento_editar(pk) {
             $("#nombre_editar").val(data[0].fields.nombre);
             $("#pk_editar").val(data[0].pk);
         }
-    });
+    }).always(function() {
+        $('#editar_tipo_documento').modal('show');
+       });
 }
 
 function tipo_documento_editar_guardar() {
     const csrftoken = getCookie('csrftoken');
-    $.ajax({
-        url: '/tipo_documento/editar/',
-        type: 'POST',
-        headers:{"X-CSRFToken": csrftoken },
-        data: { 
-            pk_editar:document.getElementById("pk_editar").value,
-            nombre_editar:document.getElementById("nombre_editar").value
-        },
-        success: function (data) {
-            $('#editar_tipo_documento').modal('hide');
-            Swal.fire({
-                icon: "success",
-                title: data.message,
-                confirmButtonColor: '#81D4FA',
-                confirmButtonText: '<a href="/tipo_documento/">Aceptar</a>'
-            });
-        }
-    });
+    var nombre = $("#nombre_editar").val();
+	if (nombre == "") {
+		$( "#nombre_editar" ).addClass( "is-invalid" );
+		Swal.fire({
+            icon: "error",
+            title: "Los campos no pueden estar vacios",
+            confirmButtonColor: '#81D4FA',
+            confirmButtonText: '<a>Aceptar</a>'
+        });
+	}else{
+        $.ajax({
+            url: '/tipo_documento/editar/',
+            type: 'POST',
+            headers:{"X-CSRFToken": csrftoken },
+            data: { 
+                pk_editar:document.getElementById("pk_editar").value,
+                nombre_editar:document.getElementById("nombre_editar").value
+            },
+            success: function (data) {
+                $('#editar_tipo_documento').modal('hide');
+                Swal.fire({
+                    icon: "success",
+                    title: data.message,
+                    confirmButtonColor: '#81D4FA',
+                    confirmButtonText: '<a href="/tipo_documento/">Aceptar</a>'
+                });
+            }
+        });
+    }
 }
 
 function tipo_documento_agregar() {
     const csrftoken = getCookie('csrftoken');
-    $.ajax({
-        url: '/tipo_documento/agregar/',
-        type: 'POST',
-        headers:{"X-CSRFToken": csrftoken },
-        data: { 
-            nombre:document.getElementById("nombre").value
-        },
-        success: function (data) {
-            $('#agregar_tipo_documento').modal('hide');
-            Swal.fire({
-                icon: "success",
-                title: data.message,
-                confirmButtonColor: '#81D4FA',
-                confirmButtonText: '<a href="/tipo_documento/">Aceptar</a>'
-            });
-        }
-    });
+	var nombre = $("#nombre").val();
+	if (nombre == "") {
+		$( "#nombre" ).addClass( "is-invalid" );
+		Swal.fire({
+            icon: "error",
+            title: "Los campos no pueden estar vacios",
+            confirmButtonColor: '#81D4FA',
+            confirmButtonText: '<a>Aceptar</a>'
+        });
+	}else{
+        $.ajax({
+            url: '/tipo_documento/agregar/',
+            type: 'POST',
+            headers:{"X-CSRFToken": csrftoken },
+            data: { 
+                nombre:document.getElementById("nombre").value
+            },
+            success: function (data) {
+                $('#agregar_tipo_documento').modal('hide');
+                Swal.fire({
+                    icon: "success",
+                    title: data.message,
+                    confirmButtonColor: '#81D4FA',
+                    confirmButtonText: '<a href="/tipo_documento/">Aceptar</a>'
+                });
+            }
+        });
+    }
 }
 
 function getCookie(name) {
