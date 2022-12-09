@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+<div class="page-content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">Documentación y Recursos</h5>
+                </div>
+                {% block documentationcontent %}{% endblock documentationcontent %}
+            </div>
+        </div>
+    </div>
+</div>
+{% block javascripts %}
+    <script src="{% static 'js/documentacion.js' %}"></script>
+{% endblock javascripts %}
+{% endblock %}

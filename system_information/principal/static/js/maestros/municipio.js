@@ -1,13 +1,13 @@
 window.onload = function() {
 	document.getElementById("menu_categorizacion").setAttribute("class", "submenu active");
-    document.getElementById("menu_categorizacion_2").setAttribute("class", "submenu active");
-    document.getElementById("menu_tipo_documento").setAttribute("class", "submenu-item active");
+    document.getElementById("menu_geografia").setAttribute("class", "submenu active");
+    document.getElementById("menu_municipio").setAttribute("class", "submenu-item active");
 };
 
-function tipo_documento_borrar(pk) {
+function municipio_borrar(pk) {
     const csrftoken = getCookie('csrftoken');
     $.ajax({
-        url: '/tipo_documento/borrar/',
+        url: '/municipio/borrar/',
         type: 'POST',
         headers:{"X-CSRFToken": csrftoken },
         data: { 
@@ -24,7 +24,7 @@ function tipo_documento_borrar(pk) {
                     icon: "success",
                     title: data.message,
                     confirmButtonColor: '#81D4FA',
-                    confirmButtonText: '<a href="/tipo_documento/">Aceptar</a>'
+                    confirmButtonText: '<a href="/municipio/">Aceptar</a>'
                 });
             }
         }
@@ -35,10 +35,10 @@ function reiniciar_formulario(){
 	$("#nombre").val("");
 }
 
-function tipo_documento_ver(pk) {
+function municipio_ver(pk) {
     const csrftoken = getCookie('csrftoken');
     $.ajax({
-        url: '/tipo_documento/ver/',
+        url: '/municipio/ver/',
         type: 'POST',
         headers:{"X-CSRFToken": csrftoken },
         data: { 
@@ -46,16 +46,17 @@ function tipo_documento_ver(pk) {
         },
         success: function (data) {
             $("#nombre_ver").val(data[0].fields.nombre);
+            $("#departamento_ver").val(data[0].fields.departamento);
         }
     }).always(function() {
-        $('#ver_tipo_documento').modal('show');
+        $('#ver_municipio').modal('show');
        });
 }
 
-function tipo_documento_editar(pk) {
+function municipio_editar(pk) {
     const csrftoken = getCookie('csrftoken');
     $.ajax({
-        url: '/tipo_documento/ver/',
+        url: '/municipio/ver/',
         type: 'POST',
         headers:{"X-CSRFToken": csrftoken },
         data: { 
@@ -64,17 +65,18 @@ function tipo_documento_editar(pk) {
         success: function (data) {
             $("#nombre_editar").val(data[0].fields.nombre);
             $("#pk_editar").val(data[0].pk);
+            $("#departamento_editar").val(data[0].fields.departamento);
         }
     }).always(function() {
-        $('#editar_tipo_documento').modal('show');
+        $('#editar_municipio').modal('show');
        });
 }
 
-function tipo_documento_editar_guardar() {
+function municipio_editar_guardar() {
     const csrftoken = getCookie('csrftoken');
-    var nombre = $("#nombre_editar").val();
+    var nombre = $("#municipio_editar").val();
 	if (nombre == "") {
-		$( "#nombre_editar" ).addClass( "is-invalid" );
+		$( "#municipio_editar" ).addClass( "is-invalid" );
 		Swal.fire({
             icon: "error",
             title: "Los campos no pueden estar vacios",
@@ -83,21 +85,22 @@ function tipo_documento_editar_guardar() {
         });
 	}else{
         $.ajax({
-            url: '/tipo_documento/editar/',
+            url: '/municipio/editar/',
             type: 'POST',
             headers:{"X-CSRFToken": csrftoken },
             data: { 
                 pk_editar:document.getElementById("pk_editar").value,
-                nombre_editar:document.getElementById("nombre_editar").value
+                nombre_editar:document.getElementById("nombre_editar").value,
+                departamento_editar:document.getElementById("departamento_editar").value
             },
             success: function (data) {
                 if (data.status == "1"){
-                    $('#editar_tipo_documento').modal('hide');
+                    $('#editar_municipio').modal('hide');
                     Swal.fire({
                         icon: "success",
                         title: data.message,
                         confirmButtonColor: '#81D4FA',
-                        confirmButtonText: '<a href="/tipo_documento/">Aceptar</a>'
+                        confirmButtonText: '<a href="/municipio/">Aceptar</a>'
                     });
                 } else {
                     Swal.fire({
@@ -113,7 +116,7 @@ function tipo_documento_editar_guardar() {
     }
 }
 
-function tipo_documento_agregar() {
+function municipio_agregar() {
     const csrftoken = getCookie('csrftoken');
 	var nombre = $("#nombre").val();
 	if (nombre == "") {
@@ -126,27 +129,28 @@ function tipo_documento_agregar() {
         });
 	}else{
         $.ajax({
-            url: '/tipo_documento/agregar/',
+            url: '/municipio/agregar/',
             type: 'POST',
             headers:{"X-CSRFToken": csrftoken },
             data: { 
-                nombre:document.getElementById("nombre").value
+                nombre:document.getElementById("nombre").value,
+                departamento:document.getElementById("departamento").value
             },
             success: function (data) {
-                $('#agregar_tipo_documento').modal('hide');
+                $('#agregar_municipio').modal('hide');
                 if (data.status == "1"){
                     Swal.fire({
                         icon: "success",
                         title: data.message,
                         confirmButtonColor: '#81D4FA',
-                        confirmButtonText: '<a href="/tipo_documento/">Aceptar</a>'
+                        confirmButtonText: '<a href="/municipio/">Aceptar</a>'
                     });
                 } else {
                     Swal.fire({
                         icon: "error",
                         title: data.message,
                         confirmButtonColor: '#81D4FA',
-                        confirmButtonText: '<a href="/tipo_documento/">Aceptar</a>'
+                        confirmButtonText: '<a href="/municipio/">Aceptar</a>'
                     });
                 }
                 

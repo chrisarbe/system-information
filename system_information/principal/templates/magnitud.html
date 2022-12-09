@@ -9,15 +9,15 @@
                 <div class="row">
                     <div class="card-header">
                         <a href="#" class="btn btn-primary" data-bs-toggle="modal"
-                        data-bs-target="#agregar_tipo_documento">Añadir</a>
-                        <!-- Modal Adicionar Tipo de Documento -->
-                        <div class="modal fade text-left w-100" id="agregar_tipo_documento" tabindex="-1"
+                        data-bs-target="#agregar_magnitud">Añadir</a>
+                        <!-- Modal Adicionar Magnitud -->
+                        <div class="modal fade text-left w-100" id="agregar_magnitud" tabindex="-1"
                         role="dialog" aria-labelledby="myModalLabel16" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl"
                                 role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h4 class="modal-title" id="myModalLabel16">Agregar Tipo de Documento</h4>
+                                        <h4 class="modal-title" id="myModalLabel16">Agregar Magnitud</h4>
                                         <button type="button" class="close" data-bs-dismiss="modal"
                                             aria-label="Close">
                                             <i data-feather="x"></i>
@@ -29,9 +29,9 @@
                                             <div class="row">
                                                 <div class="col-md-6 col-12">
                                                     <div class="form-group">
-                                                        <label for="nombre-columna">Nombre de Tipo de Documento</label>
+                                                        <label for="nombre-columna">Nombre de Magniud</label>
                                                         <input type="text" id="nombre" class="form-control"
-                                                            placeholder="Nombre Tipo de Documento" name="nombre">
+                                                            placeholder="Nombre Magnitud" name="nombre">
                                                     </div>
                                                 </div>
                                             </div>
@@ -39,7 +39,7 @@
                                         <div class="row">
                                             <div class="col-12 d-flex justify-content-end">
                                                 <button type="submit"
-                                                    class="btn btn-primary me-1 mb-1" onclick="tipo_documento_agregar()">Guardar</button>
+                                                    class="btn btn-primary me-1 mb-1" onclick="magnitud_agregar()">Guardar</button>
                                                 <button type="reset"
                                                     class="btn btn-light-secondary me-1 mb-1" onclick="reiniciar_formulario()">Reiniciar</button>
                                             </div>
@@ -86,18 +86,18 @@
                                             Acciones
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-end">
-                                            <a class="dropdown-item" href="#" onclick="tipo_documento_ver('{{x.id}}')">Ver</a>
-                                            <a class="dropdown-item" href="#" onclick="tipo_documento_editar('{{x.id}}')">Editar</a>
-                                            <a class="dropdown-item" href="#" onclick="tipo_documento_borrar('{{x.id}}')">Borrar</a>
+                                            <a class="dropdown-item" href="#" onclick="magnitud_ver('{{x.id}}')">Ver</a>
+                                            <a class="dropdown-item" href="#" onclick="magnitud_editar('{{x.id}}')">Editar</a>
+                                            <a class="dropdown-item" href="#" onclick="magnitud_borrar('{{x.id}}')">Borrar</a>
                                         </div>
-                                        <!-- Modal Ver Tipo de Documento -->
-                                        <div class="modal fade text-left w-100" id="ver_tipo_documento" tabindex="-1"
+                                        <!-- Modal Ver Magnitud -->
+                                        <div class="modal fade text-left w-100" id="ver_magnitud" tabindex="-1"
                                         role="dialog" aria-labelledby="myModalLabel16" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl"
                                                 role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h4 class="modal-title" id="myModalLabel16">Vista Tipo de Documento</h4>
+                                                        <h4 class="modal-title" id="myModalLabel16">Vista Magnitud</h4>
                                                         <button type="button" class="close" data-bs-dismiss="modal"
                                                             aria-label="Close">
                                                             <i data-feather="x"></i>
@@ -108,7 +108,7 @@
                                                             <div class="row">
                                                                 <div class="col-md-6 col-12">
                                                                     <div class="form-group">
-                                                                        <label for="nombre-columna">Nombre de Tipo de Documento</label>
+                                                                        <label for="nombre-columna">Nombre de Magnitud</label>
                                                                         <input for="disabledInput" type="text" id="nombre_ver" class="form-control" name="nombre_ver" value="..." disabled>
                                                                     </div>
                                                                 </div>
@@ -125,14 +125,14 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- Modal Editar Tipo de Documento -->
-                                        <div class="modal fade text-left w-100" id="editar_tipo_documento" tabindex="-1"
+                                        <!-- Modal Editar Magnitud -->
+                                        <div class="modal fade text-left w-100" id="editar_magnitud" tabindex="-1"
                                         role="dialog" aria-labelledby="myModalLabel16" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl"
                                                 role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h4 class="modal-title" id="myModalLabel16">Edición Tipo de Documento</h4>
+                                                        <h4 class="modal-title" id="myModalLabel16">Edición Magnitud</h4>
                                                         <button type="button" class="close" data-bs-dismiss="modal"
                                                             aria-label="Close">
                                                             <i data-feather="x"></i>
@@ -143,7 +143,7 @@
                                                             <div class="row">
                                                                 <div class="col-md-6 col-12">
                                                                     <div class="form-group">
-                                                                        <label for="nombre-columna">Nombre de Tipo de Documento</label>
+                                                                        <label for="nombre-columna">Nombre de Magnitud</label>
                                                                         <input type="text" id="nombre_editar" class="form-control" name="nombre_editar" value="...">
                                                                         <input type="hidden" id="pk_editar" class="form-control" name="pk_editar" value="...">
                                                                     </div>
@@ -153,7 +153,7 @@
                                                         <div class="row">
                                                             <div class="col-12 d-flex justify-content-end">
                                                                 <button
-                                                                    class="btn btn-primary me-1 mb-1" onclick="tipo_documento_editar_guardar()">Guardar</button>
+                                                                    class="btn btn-primary me-1 mb-1" onclick="magnitud_editar_guardar()">Guardar</button>
                                                                 <button type="reset"
                                                                     class="btn btn-light-secondary me-1 mb-1">Reiniciar</button>
                                                             </div>
@@ -182,7 +182,7 @@
     </section>
 </div>
 {% block javascripts %}
-    <script src="{% static 'js/maestros/tipo_documento.js' %}"></script>
+    <script src="{% static 'js/maestros/magnitud.js' %}"></script>
     <script src="{% static 'vendors/simple-datatables/simple-datatables.js' %}"></script>
     <script>
         // Simple Datatable
@@ -190,26 +190,4 @@
         let dataTable = new simpleDatatables.DataTable(table1);
     </script>
 {% endblock javascripts %}
-
-
-<script type="text/javascript">
-    window.onload = function () {
-        console.log("{{ mesage }}");
-      }
-</script>
-{% if context.code == '2' %}
-<script type="text/javascript">
-    Swal.fire({
-        icon: "success",
-        title: "{{ mesage }}"
-    });
-</script>
-{% elif code == '3' %}
-<script type="text/javascript">
-    Swal.fire({
-        icon: "error",
-        title: "{{ mesage }}"
-    });
-</script>
-{% endif %}
 {% endblock %}

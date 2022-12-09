@@ -1,13 +1,13 @@
 window.onload = function() {
 	document.getElementById("menu_categorizacion").setAttribute("class", "submenu active");
-    document.getElementById("menu_categorizacion_2").setAttribute("class", "submenu active");
-    document.getElementById("menu_tipo_documento").setAttribute("class", "submenu-item active");
+    document.getElementById("menu_geografia").setAttribute("class", "submenu active");
+    document.getElementById("menu_departamento").setAttribute("class", "submenu-item active");
 };
 
-function tipo_documento_borrar(pk) {
+function departamento_borrar(pk) {
     const csrftoken = getCookie('csrftoken');
     $.ajax({
-        url: '/tipo_documento/borrar/',
+        url: '/departamento/borrar/',
         type: 'POST',
         headers:{"X-CSRFToken": csrftoken },
         data: { 
@@ -24,7 +24,7 @@ function tipo_documento_borrar(pk) {
                     icon: "success",
                     title: data.message,
                     confirmButtonColor: '#81D4FA',
-                    confirmButtonText: '<a href="/tipo_documento/">Aceptar</a>'
+                    confirmButtonText: '<a href="/departamento/">Aceptar</a>'
                 });
             }
         }
@@ -35,10 +35,10 @@ function reiniciar_formulario(){
 	$("#nombre").val("");
 }
 
-function tipo_documento_ver(pk) {
+function departamento_ver(pk) {
     const csrftoken = getCookie('csrftoken');
     $.ajax({
-        url: '/tipo_documento/ver/',
+        url: '/departamento/ver/',
         type: 'POST',
         headers:{"X-CSRFToken": csrftoken },
         data: { 
@@ -46,16 +46,17 @@ function tipo_documento_ver(pk) {
         },
         success: function (data) {
             $("#nombre_ver").val(data[0].fields.nombre);
+            $("#pais_ver").val(data[0].fields.pais);
         }
     }).always(function() {
-        $('#ver_tipo_documento').modal('show');
+        $('#ver_departamento').modal('show');
        });
 }
 
-function tipo_documento_editar(pk) {
+function departamento_editar(pk) {
     const csrftoken = getCookie('csrftoken');
     $.ajax({
-        url: '/tipo_documento/ver/',
+        url: '/departamento/ver/',
         type: 'POST',
         headers:{"X-CSRFToken": csrftoken },
         data: { 
@@ -64,17 +65,18 @@ function tipo_documento_editar(pk) {
         success: function (data) {
             $("#nombre_editar").val(data[0].fields.nombre);
             $("#pk_editar").val(data[0].pk);
+            $("#pais_editar").val(data[0].fields.pais);
         }
     }).always(function() {
-        $('#editar_tipo_documento').modal('show');
+        $('#editar_departamento').modal('show');
        });
 }
 
-function tipo_documento_editar_guardar() {
+function departamento_editar_guardar() {
     const csrftoken = getCookie('csrftoken');
-    var nombre = $("#nombre_editar").val();
+    var nombre = $("#departamento_editar").val();
 	if (nombre == "") {
-		$( "#nombre_editar" ).addClass( "is-invalid" );
+		$( "#departamento_editar" ).addClass( "is-invalid" );
 		Swal.fire({
             icon: "error",
             title: "Los campos no pueden estar vacios",
@@ -83,21 +85,22 @@ function tipo_documento_editar_guardar() {
         });
 	}else{
         $.ajax({
-            url: '/tipo_documento/editar/',
+            url: '/departamento/editar/',
             type: 'POST',
             headers:{"X-CSRFToken": csrftoken },
             data: { 
                 pk_editar:document.getElementById("pk_editar").value,
-                nombre_editar:document.getElementById("nombre_editar").value
+                nombre_editar:document.getElementById("nombre_editar").value,
+                pais_editar:document.getElementById("pais_editar").value
             },
             success: function (data) {
                 if (data.status == "1"){
-                    $('#editar_tipo_documento').modal('hide');
+                    $('#editar_pais').modal('hide');
                     Swal.fire({
                         icon: "success",
                         title: data.message,
                         confirmButtonColor: '#81D4FA',
-                        confirmButtonText: '<a href="/tipo_documento/">Aceptar</a>'
+                        confirmButtonText: '<a href="/departamento/">Aceptar</a>'
                     });
                 } else {
                     Swal.fire({
@@ -113,7 +116,7 @@ function tipo_documento_editar_guardar() {
     }
 }
 
-function tipo_documento_agregar() {
+function departamento_agregar() {
     const csrftoken = getCookie('csrftoken');
 	var nombre = $("#nombre").val();
 	if (nombre == "") {
@@ -126,27 +129,28 @@ function tipo_documento_agregar() {
         });
 	}else{
         $.ajax({
-            url: '/tipo_documento/agregar/',
+            url: '/departamento/agregar/',
             type: 'POST',
             headers:{"X-CSRFToken": csrftoken },
             data: { 
-                nombre:document.getElementById("nombre").value
+                nombre:document.getElementById("nombre").value,
+                pais:document.getElementById("pais").value
             },
             success: function (data) {
-                $('#agregar_tipo_documento').modal('hide');
+                $('#agregar_departamento').modal('hide');
                 if (data.status == "1"){
                     Swal.fire({
                         icon: "success",
                         title: data.message,
                         confirmButtonColor: '#81D4FA',
-                        confirmButtonText: '<a href="/tipo_documento/">Aceptar</a>'
+                        confirmButtonText: '<a href="/departamento/">Aceptar</a>'
                     });
                 } else {
                     Swal.fire({
                         icon: "error",
                         title: data.message,
                         confirmButtonColor: '#81D4FA',
-                        confirmButtonText: '<a href="/tipo_documento/">Aceptar</a>'
+                        confirmButtonText: '<a href="/departamento/">Aceptar</a>'
                     });
                 }
                 

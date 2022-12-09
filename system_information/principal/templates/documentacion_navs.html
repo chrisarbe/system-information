@@ -1,0 +1,160 @@
+{% extends 'documentacion.html' %}
+{% load static %}
+{% block documentationcontent %}
+<div class="card-body">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#home"
+                role="tab" aria-controls="home" aria-selected="true">Documetación y Uso de Datos Maestros</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#profile"
+                role="tab" aria-controls="profile" aria-selected="false">Documetación y Uso de Aplicaciones</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#contact"
+                role="tab" aria-controls="contact" aria-selected="false">Documetación y Uso de Soporte Técnico</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel"
+            aria-labelledby="home-tab">
+            <div class="row" style="margin-top: 20px;">
+                <div class="col-md-4 col-sm-12">
+                    <div class="card">
+                        <div class="card-content">
+                            <img class="card-img-top img-fluid" src="{% static 'images/samples/globo.png' %}"
+                                alt="Card image cap" style="height: 20rem" />
+                            <div class="card-body">
+                                <h4 class="card-title">Documentación Técnica</h4>
+                                <p class="card-text">
+                                    Jelly-o sesame snaps cheesecake topping. Cupcake fruitcake macaroon donut
+                                    pastry gummies tiramisu chocolate bar muffin. Dessert bonbon caramels
+                                    brownie chocolate
+                                    bar
+                                    chocolate tart dragée.
+                                </p>
+                                <p class="card-text">
+                                    Cupcake fruitcake macaroon donut pastry gummies tiramisu chocolate bar
+                                    muffin.
+                                </p>
+                                <button class="btn btn-primary block" onclick="location.href='/documentacion_maestros_tecnico/'">Empezar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <div class="card">
+                        <div class="card-content">
+                            <img class="card-img-top img-fluid" src="{% static 'images/samples/globo2.png' %}"
+                                alt="Card image cap" style="height: 20rem" />
+                            <div class="card-body">
+                                <h4 class="card-title">Documentación Funcional</h4>
+                                <p class="card-text">
+                                    Jelly-o sesame snaps cheesecake topping. Cupcake fruitcake macaroon donut
+                                    pastry gummies tiramisu chocolate bar muffin. Dessert bonbon caramels
+                                    brownie chocolate
+                                    bar
+                                    chocolate tart dragée.
+                                </p>
+                                <p class="card-text">
+                                    Cupcake fruitcake macaroon donut pastry gummies tiramisu chocolate bar
+                                    muffin.
+                                </p>
+                                <button class="btn btn-primary block">Empezar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <div class="card">
+                        <div class="card-content">
+                            <img class="card-img-top img-fluid" src="{% static 'images/samples/globo3.png' %}"
+                                alt="Card image cap" style="height: 20rem" />
+                            <div class="card-body">
+                                <h4 class="card-title">Mejores Prácticas</h4>
+                                <p class="card-text">
+                                    Jelly-o sesame snaps cheesecake topping. Cupcake fruitcake macaroon donut
+                                    pastry gummies tiramisu chocolate bar muffin. Dessert bonbon caramels
+                                    brownie chocolate
+                                    bar
+                                    chocolate tart dragée.
+                                </p>
+                                <p class="card-text">
+                                    Cupcake fruitcake macaroon donut pastry gummies tiramisu chocolate bar
+                                    muffin.
+                                </p>
+                                <button class="btn btn-primary block">Empezar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="profile" role="tabpanel"
+            aria-labelledby="profile-tab">
+            <div class="row" style="margin-top: 20px;">
+                <div class="col-md-6 col-sm-12">
+                    <div class="card">
+                        <div class="card-content">
+                            <img class="card-img-top img-fluid" src="{% static 'images/samples/origami.png' %}"
+                                alt="Card image cap" style="height: 20rem" />
+                            <div class="card-body">
+                                <h4 class="card-title">Documentación Técnica</h4>
+                                <p class="card-text">
+                                    Jelly-o sesame snaps cheesecake topping. Cupcake fruitcake macaroon donut
+                                    pastry gummies tiramisu chocolate bar muffin. Dessert bonbon caramels
+                                    brownie chocolate
+                                    bar
+                                    chocolate tart dragée.
+                                </p>
+                                <p class="card-text">
+                                    Cupcake fruitcake macaroon donut pastry gummies tiramisu chocolate bar
+                                    muffin.
+                                </p>
+                                <button class="btn btn-primary block">Empezar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <div class="card">
+                        <div class="card-content">
+                            <img class="card-img-top img-fluid" src="{% static 'images/samples/origami2.png' %}"
+                                alt="Card image cap" style="height: 20rem" />
+                            <div class="card-body">
+                                <h4 class="card-title">Documentación Funcional</h4>
+                                <p class="card-text">
+                                    Jelly-o sesame snaps cheesecake topping. Cupcake fruitcake macaroon donut
+                                    pastry gummies tiramisu chocolate bar muffin. Dessert bonbon caramels
+                                    brownie chocolate
+                                    bar
+                                    chocolate tart dragée.
+                                </p>
+                                <p class="card-text">
+                                    Cupcake fruitcake macaroon donut pastry gummies tiramisu chocolate bar
+                                    muffin.
+                                </p>
+                                <button class="btn btn-primary block">Empezar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="contact" role="tabpanel"
+            aria-labelledby="contact-tab">
+            <p class="mt-2">Duis ultrices purus non eros fermentum hendrerit. Aenean
+                ornare interdum
+                viverra. Sed ut odio velit. Aenean eu diam
+                dictum nibh rhoncus mattis quis ac risus. Vivamus eu congue ipsum.
+                Maecenas id
+                sollicitudin ex. Cras in ex vestibulum,
+                posuere orci at, sollicitudin purus. Morbi mollis elementum enim, in
+                cursus sem
+                placerat ut.</p>
+        </div>
+    </div>
+</div>
+
+{% endblock documentationcontent %}

@@ -1,13 +1,13 @@
 window.onload = function() {
 	document.getElementById("menu_categorizacion").setAttribute("class", "submenu active");
-    document.getElementById("menu_categorizacion_2").setAttribute("class", "submenu active");
-    document.getElementById("menu_tipo_documento").setAttribute("class", "submenu-item active");
+    document.getElementById("menu_categorizacion_3").setAttribute("class", "submenu active");
+    document.getElementById("menu_unidad").setAttribute("class", "submenu-item active");
 };
 
-function tipo_documento_borrar(pk) {
+function unidad_borrar(pk) {
     const csrftoken = getCookie('csrftoken');
     $.ajax({
-        url: '/tipo_documento/borrar/',
+        url: '/unidad/borrar/',
         type: 'POST',
         headers:{"X-CSRFToken": csrftoken },
         data: { 
@@ -24,7 +24,7 @@ function tipo_documento_borrar(pk) {
                     icon: "success",
                     title: data.message,
                     confirmButtonColor: '#81D4FA',
-                    confirmButtonText: '<a href="/tipo_documento/">Aceptar</a>'
+                    confirmButtonText: '<a href="/unidad/">Aceptar</a>'
                 });
             }
         }
@@ -35,10 +35,10 @@ function reiniciar_formulario(){
 	$("#nombre").val("");
 }
 
-function tipo_documento_ver(pk) {
+function unidad_ver(pk) {
     const csrftoken = getCookie('csrftoken');
     $.ajax({
-        url: '/tipo_documento/ver/',
+        url: '/unidad/ver/',
         type: 'POST',
         headers:{"X-CSRFToken": csrftoken },
         data: { 
@@ -46,16 +46,18 @@ function tipo_documento_ver(pk) {
         },
         success: function (data) {
             $("#nombre_ver").val(data[0].fields.nombre);
+            $("#magnitud_ver").val(data[0].fields.magnitud);
+            $("#simbolo_ver").val(data[0].fields.simbolo);
         }
     }).always(function() {
-        $('#ver_tipo_documento').modal('show');
+        $('#ver_unidad').modal('show');
        });
 }
 
-function tipo_documento_editar(pk) {
+function unidad_editar(pk) {
     const csrftoken = getCookie('csrftoken');
     $.ajax({
-        url: '/tipo_documento/ver/',
+        url: '/unidad/ver/',
         type: 'POST',
         headers:{"X-CSRFToken": csrftoken },
         data: { 
@@ -64,17 +66,19 @@ function tipo_documento_editar(pk) {
         success: function (data) {
             $("#nombre_editar").val(data[0].fields.nombre);
             $("#pk_editar").val(data[0].pk);
+            $("#magnitud_editar").val(data[0].fields.magnitud);
+            $("#simbolo_editar").val(data[0].fields.simbolo);
         }
     }).always(function() {
-        $('#editar_tipo_documento').modal('show');
+        $('#editar_unidad').modal('show');
        });
 }
 
-function tipo_documento_editar_guardar() {
+function unidad_editar_guardar() {
     const csrftoken = getCookie('csrftoken');
-    var nombre = $("#nombre_editar").val();
+    var nombre = $("#unidad_editar").val();
 	if (nombre == "") {
-		$( "#nombre_editar" ).addClass( "is-invalid" );
+		$( "#unidad_editar" ).addClass( "is-invalid" );
 		Swal.fire({
             icon: "error",
             title: "Los campos no pueden estar vacios",
@@ -83,21 +87,23 @@ function tipo_documento_editar_guardar() {
         });
 	}else{
         $.ajax({
-            url: '/tipo_documento/editar/',
+            url: '/unidad/editar/',
             type: 'POST',
             headers:{"X-CSRFToken": csrftoken },
             data: { 
                 pk_editar:document.getElementById("pk_editar").value,
-                nombre_editar:document.getElementById("nombre_editar").value
+                nombre_editar:document.getElementById("nombre_editar").value,
+                magnitud_editar:document.getElementById("magnitud_editar").value,
+                simbolo_editar:document.getElementById("simbolo_editar").value
             },
             success: function (data) {
                 if (data.status == "1"){
-                    $('#editar_tipo_documento').modal('hide');
+                    $('#editar_unidad').modal('hide');
                     Swal.fire({
                         icon: "success",
                         title: data.message,
                         confirmButtonColor: '#81D4FA',
-                        confirmButtonText: '<a href="/tipo_documento/">Aceptar</a>'
+                        confirmButtonText: '<a href="/unidad/">Aceptar</a>'
                     });
                 } else {
                     Swal.fire({
@@ -113,7 +119,7 @@ function tipo_documento_editar_guardar() {
     }
 }
 
-function tipo_documento_agregar() {
+function unidad_agregar() {
     const csrftoken = getCookie('csrftoken');
 	var nombre = $("#nombre").val();
 	if (nombre == "") {
@@ -126,27 +132,29 @@ function tipo_documento_agregar() {
         });
 	}else{
         $.ajax({
-            url: '/tipo_documento/agregar/',
+            url: '/unidad/agregar/',
             type: 'POST',
             headers:{"X-CSRFToken": csrftoken },
             data: { 
-                nombre:document.getElementById("nombre").value
+                nombre:document.getElementById("nombre").value,
+                magnitud:document.getElementById("magnitud").value,
+                simbolo:document.getElementById("simbolo").value
             },
             success: function (data) {
-                $('#agregar_tipo_documento').modal('hide');
+                $('#agregar_unidad').modal('hide');
                 if (data.status == "1"){
                     Swal.fire({
                         icon: "success",
                         title: data.message,
                         confirmButtonColor: '#81D4FA',
-                        confirmButtonText: '<a href="/tipo_documento/">Aceptar</a>'
+                        confirmButtonText: '<a href="/unidad/">Aceptar</a>'
                     });
                 } else {
                     Swal.fire({
                         icon: "error",
                         title: data.message,
                         confirmButtonColor: '#81D4FA',
-                        confirmButtonText: '<a href="/tipo_documento/">Aceptar</a>'
+                        confirmButtonText: '<a href="/unidad/">Aceptar</a>'
                     });
                 }
                 

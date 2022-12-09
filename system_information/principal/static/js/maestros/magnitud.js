@@ -1,13 +1,13 @@
 window.onload = function() {
 	document.getElementById("menu_categorizacion").setAttribute("class", "submenu active");
     document.getElementById("menu_categorizacion_2").setAttribute("class", "submenu active");
-    document.getElementById("menu_tipo_documento").setAttribute("class", "submenu-item active");
+    document.getElementById("menu_magnitud").setAttribute("class", "submenu-item active");
 };
 
-function tipo_documento_borrar(pk) {
+function magnitud_borrar(pk) {
     const csrftoken = getCookie('csrftoken');
     $.ajax({
-        url: '/tipo_documento/borrar/',
+        url: '/magnitud/borrar/',
         type: 'POST',
         headers:{"X-CSRFToken": csrftoken },
         data: { 
@@ -24,7 +24,7 @@ function tipo_documento_borrar(pk) {
                     icon: "success",
                     title: data.message,
                     confirmButtonColor: '#81D4FA',
-                    confirmButtonText: '<a href="/tipo_documento/">Aceptar</a>'
+                    confirmButtonText: '<a href="/magnitud/">Aceptar</a>'
                 });
             }
         }
@@ -35,10 +35,10 @@ function reiniciar_formulario(){
 	$("#nombre").val("");
 }
 
-function tipo_documento_ver(pk) {
+function magnitud_ver(pk) {
     const csrftoken = getCookie('csrftoken');
     $.ajax({
-        url: '/tipo_documento/ver/',
+        url: '/magnitud/ver/',
         type: 'POST',
         headers:{"X-CSRFToken": csrftoken },
         data: { 
@@ -48,14 +48,14 @@ function tipo_documento_ver(pk) {
             $("#nombre_ver").val(data[0].fields.nombre);
         }
     }).always(function() {
-        $('#ver_tipo_documento').modal('show');
+        $('#ver_magnitud').modal('show');
        });
 }
 
-function tipo_documento_editar(pk) {
+function magnitud_editar(pk) {
     const csrftoken = getCookie('csrftoken');
     $.ajax({
-        url: '/tipo_documento/ver/',
+        url: '/magnitud/ver/',
         type: 'POST',
         headers:{"X-CSRFToken": csrftoken },
         data: { 
@@ -66,11 +66,11 @@ function tipo_documento_editar(pk) {
             $("#pk_editar").val(data[0].pk);
         }
     }).always(function() {
-        $('#editar_tipo_documento').modal('show');
+        $('#editar_magnitud').modal('show');
        });
 }
 
-function tipo_documento_editar_guardar() {
+function magnitud_editar_guardar() {
     const csrftoken = getCookie('csrftoken');
     var nombre = $("#nombre_editar").val();
 	if (nombre == "") {
@@ -83,7 +83,7 @@ function tipo_documento_editar_guardar() {
         });
 	}else{
         $.ajax({
-            url: '/tipo_documento/editar/',
+            url: '/magnitud/editar/',
             type: 'POST',
             headers:{"X-CSRFToken": csrftoken },
             data: { 
@@ -92,12 +92,12 @@ function tipo_documento_editar_guardar() {
             },
             success: function (data) {
                 if (data.status == "1"){
-                    $('#editar_tipo_documento').modal('hide');
+                    $('#editar_magnitud').modal('hide');
                     Swal.fire({
                         icon: "success",
                         title: data.message,
                         confirmButtonColor: '#81D4FA',
-                        confirmButtonText: '<a href="/tipo_documento/">Aceptar</a>'
+                        confirmButtonText: '<a href="/magnitud/">Aceptar</a>'
                     });
                 } else {
                     Swal.fire({
@@ -113,7 +113,7 @@ function tipo_documento_editar_guardar() {
     }
 }
 
-function tipo_documento_agregar() {
+function magnitud_agregar() {
     const csrftoken = getCookie('csrftoken');
 	var nombre = $("#nombre").val();
 	if (nombre == "") {
@@ -126,27 +126,27 @@ function tipo_documento_agregar() {
         });
 	}else{
         $.ajax({
-            url: '/tipo_documento/agregar/',
+            url: '/magnitud/agregar/',
             type: 'POST',
             headers:{"X-CSRFToken": csrftoken },
             data: { 
                 nombre:document.getElementById("nombre").value
             },
             success: function (data) {
-                $('#agregar_tipo_documento').modal('hide');
+                $('#agregar_magnitud').modal('hide');
                 if (data.status == "1"){
                     Swal.fire({
                         icon: "success",
                         title: data.message,
                         confirmButtonColor: '#81D4FA',
-                        confirmButtonText: '<a href="/tipo_documento/">Aceptar</a>'
+                        confirmButtonText: '<a href="/magnitud/">Aceptar</a>'
                     });
                 } else {
                     Swal.fire({
                         icon: "error",
                         title: data.message,
                         confirmButtonColor: '#81D4FA',
-                        confirmButtonText: '<a href="/tipo_documento/">Aceptar</a>'
+                        confirmButtonText: '<a href="/magnitud/">Aceptar</a>'
                     });
                 }
                 

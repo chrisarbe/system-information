@@ -142,24 +142,7 @@
                 </div>
                 <div class="modal-body">
                     <p>
-                        Bonbon caramels muffin. Chocolate bar oat cake cookie pastry
-                        dragée pastry.
-                        Carrot cake
-                        chocolate tootsie roll chocolate bar candy canes biscuit.
-
-                        Gummies bonbon apple pie fruitcake icing biscuit apple pie
-                        jelly-o sweet
-                        roll. Toffee sugar
-                        plum sugar plum jelly-o jujubes bonbon dessert carrot cake.
-                        Cookie dessert
-                        tart muffin topping
-                        donut icing fruitcake. Sweet roll cotton candy dragée danish
-                        Candy canes
-                        chocolate bar cookie.
-                        Gingerbread apple pie oat cake. Carrot cake fruitcake bear claw.
-                        Pastry
-                        gummi bears
-                        marshmallow jelly-o.
+                        {% lorem 1 b random %}
                     </p>
                 </div>
                 <div class="modal-footer">
@@ -219,8 +202,14 @@
                                         <li id="menu_tipo_documento" class="submenu-item">
                                             <a href="{% url 'tipo_documento' %}">Tipo de Documento</a>
                                         </li>
-                                        <li class="submenu-item ">
-                                            <a href="#">Tipo de Proveedor</a>
+                                        <li id="menu_tipo_proveedor" class="submenu-item ">
+                                            <a href="{% url 'tipo_proveedor' %}">Tipo de Proveedor</a>
+                                        </li>
+                                        <li id="menu_tipo_cliente" class="submenu-item ">
+                                            <a href="{% url 'tipo_cliente' %}">Tipo de Cliente</a>
+                                        </li>
+                                        <li id="menu_magnitud" class="submenu-item ">
+                                            <a href="{% url 'magnitud' %}">Magnitud</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -229,15 +218,41 @@
                                         <i class="bi bi-geo-fill"></i>
                                         <span>Geografía</span>
                                     </a>
-                                    <ul class="submenu ">
-                                        <li class="submenu-item ">
-                                            <a href="#">Pais</a>
+                                    <ul id="menu_geografia" class="submenu ">
+                                        <li id="menu_pais" class="submenu-item ">
+                                            <a href="{% url 'pais' %}">País</a>
                                         </li>
-                                        <li class="submenu-item ">
-                                            <a href="#">Departamento</a>
+                                        <li id="menu_departamento" class="submenu-item ">
+                                            <a href="{% url 'departamento' %}">Departamento</a>
                                         </li>
-                                        <li class="submenu-item ">
-                                            <a href="#">Municipio</a>
+                                        <li id="menu_municipio" class="submenu-item ">
+                                            <a href="{% url 'municipio' %}">Municipio</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="sidebar-item  has-sub">
+                                    <a href="#" class='sidebar-link'>
+                                        <i class="bi bi-signpost-split-fill"></i>
+                                        <span>Productos</span>
+                                    </a>
+                                    <ul id="menu_categorizacion_3" class="submenu">
+                                        <li id="menu_unidad" class="submenu-item">
+                                            <a href="{% url 'unidad' %}">Unidad</a>
+                                        </li>
+                                        <li id="menu_categoria" class="submenu-item ">
+                                            <a href="{% url 'categoria' %}">Categoría</a>
+                                        </li>
+                                        <li id="menu_marca" class="submenu-item ">
+                                            <a href="{% url 'marca' %}">Marca</a>
+                                        </li>
+                                        <li id="menu_garantia" class="submenu-item ">
+                                            <a href="#">Garantía</a>
+                                        </li>
+                                        <li id="menu_impusto" class="submenu-item ">
+                                            <a href="#">Impusto</a>
+                                        </li>
+                                        <li id="menu_tipo_producto" class="submenu-item ">
+                                            <a href="#">Tipo de Producto</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -259,7 +274,7 @@
                                     </a>
                                     <ul class="submenu ">
                                         <li class="submenu-item ">
-                                            <a href="#">Caja</a>
+                                            <a href="{% url 'administracion_pos_caja' %}">Caja</a>
                                         </li>
                                         <li class="submenu-item ">
                                             <a href="{% url 'proveedores' %}">Proveedores</a>
@@ -343,6 +358,9 @@
                                 <li class="submenu-item ">
                                     <a href="#">Mis Herramientas</a>
                                 </li>
+                                <li class="submenu-item ">
+                                    <a href="#">Módulo de Vencimientos</a>
+                                </li>
                             </ul>
                         </li>
 
@@ -355,8 +373,8 @@
 
                         <li class="sidebar-title">Soporte</li>
 
-                        <li class="sidebar-item  ">
-                            <a href="#" class='sidebar-link'>
+                        <li id="menu_documentacion" class="sidebar-item  ">
+                            <a href="{% url 'documentacion' %}" class='sidebar-link'>
                                 <i class="bi bi-life-preserver"></i>
                                 <span>Documentación</span>
                             </a>

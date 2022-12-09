@@ -1,0 +1,56 @@
+{% extends 'documentacion.html' %}
+{% load static %}
+{% block documentationcontent %}
+<div class="card-body">
+    <div class="page-title">
+        <div class="row">
+            <div class="col-12 col-md-6 order-md-1 order-last">
+                <h3></h3>
+                <p class="text-subtitle text-muted">Documetación y Uso de Datos Maestros </p>
+            </div>
+            <div class="col-12 col-md-6 order-md-2 order-first">
+                <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'documentacion' %}">Doocumentación</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Documentación Técnica</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <section class="section">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Documentación Técnica</h4>
+            </div>
+            <div class="card-body">
+                <img src="{% static 'images/bg/2107.jpg' %}" class="img-fluid" alt="Responsive image">
+                <div class="row" style="margin-top: 20px;">
+                    <p class="text-subtitle text-muted">Contenido: </p>
+                    <div class="col-4">
+                        <div id="list-example" class="list-group">
+                            <a class="list-group-item list-group-item-action" href="#list-item-1">What is the Document Lifecycle?</a>
+                            <a class="list-group-item list-group-item-action" href="#list-item-2">Traditional document lifecycle</a>
+                            <a class="list-group-item list-group-item-action" href="#list-item-3">Modern document lifecycle</a>
+                            <a class="list-group-item list-group-item-action" href="#list-item-4">Review</a>
+                        </div>
+                    </div>
+                    <div class="col-8">
+                        <div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example">
+                            <h4 id="list-item-1">What is the Document Lifecycle?</h4>
+                            <p>{% lorem 2 b random %}</p>
+                            <h4 id="list-item-2">Traditional document lifecycle</h4>
+                            <p>{% lorem 3 b random %}</p>
+                            <h4 id="list-item-3">Modern document lifecycle</h4>
+                            <p>{% lorem 1 b random %}</p>
+                            <h4 id="list-item-4">Review</h4>
+                            <p>{% lorem 2 b random %}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+{% endblock documentationcontent %}
