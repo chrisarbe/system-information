@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import datetime
 
 # Create your models here.
 class TipoDocumento(models.Model):
@@ -87,6 +88,7 @@ class Proveedor(models.Model):
     primer_apellido=models.CharField(max_length=20)
     segundo_apellido=models.CharField(max_length=20)
     nombre_unico=models.CharField(max_length=50)
+    fecha_nacimiento=models.DateField(default=datetime.now)
     celular=models.CharField(max_length=15)
     telefono_fijo=models.CharField(max_length=10)
     email=models.CharField(max_length=50)
@@ -105,6 +107,7 @@ class Cliente(models.Model):
     primer_apellido=models.CharField(max_length=20)
     segundo_apellido=models.CharField(max_length=20)
     nombre_unico=models.CharField(max_length=50)
+    fecha_nacimiento=models.DateField(default=datetime.now)
     celular=models.CharField(max_length=15)
     telefono_fijo=models.CharField(max_length=10)
     email=models.CharField(max_length=50)

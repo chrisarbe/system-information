@@ -47,16 +47,6 @@ def signout(request):
     return redirect('login')
 
 
-def proveedores(request):
-    if request.user.is_authenticated:
-        return render(request, 'proveedores.html', {
-            'title':'Proveedores',
-            'subtitle':'Administración de Proveedores'
-        })
-    else:
-        return render(request, 'login.html')
-
-
 def tipo_documento(request):
     if request.user.is_authenticated:
         lista = TipoDocumento.objects.all()
@@ -183,6 +173,28 @@ def marca(request):
             'subtitle':'Administración de Marcas',
             'lista':lista,
             'categorias':categorias
+        })
+    else:
+        return render(request, 'login.html')
+
+
+def proveedor(request):
+    if request.user.is_authenticated:
+        lista = Proveedor.objects.all()
+        tipos_proveedor = TipoProveedor.objects.all()
+        tipos_documento = TipoDocumento.objects.all()
+        paises = Pais.objects.all()
+        departamentos = Departamento.objects.all()
+        municipios = Municipio.objects.all()
+        return render(request, 'proveedor.html', {
+            'title':'Proveedor',
+            'subtitle':'Administración de Proveedores',
+            'lista':lista,
+            'tipos_proveedor':tipos_proveedor,
+            'tipos_documento':tipos_documento,
+            'paises':paises,
+            'departamentos':departamentos,
+            'municipios':municipios
         })
     else:
         return render(request, 'login.html')
@@ -418,6 +430,44 @@ def marca_agregar(request):
             return JsonResponse({'message' : 'Error', 'status' : '2'}, status=200)
 
 
+def proveedor_agregar(request):
+    if request.method == 'GET':
+        return render(request, 'proveedor.html', {
+            'mesage':'Formulario Proveedor',
+            'code':'1'
+            })
+    else:
+        try:
+            nombre_validar = Proveedor.objects.filter(numero_documento=request.POST['numero_documento'])
+            if nombre_validar.exists():
+                return JsonResponse({'message' : 'Ya existe un registro con el numero de documento de Proveedor: ' + str(request.POST['numero_documento']), 'status' : '0'}, status=200)
+            else:
+                documento = Proveedor()
+                documento.tipo_proveedor = TipoProveedor.objects.get(pk = request.POST['tipo_proveedor'])
+                documento.tipo_documento = TipoDocumento.objects.get(pk = request.POST['tipo_documento'])
+                documento.numero_documento = request.POST['numero_documento']
+                documento.primer_nombre = request.POST['primer_nombre']
+                documento.segundo_nombre = request.POST['segundo_nombre']
+                documento.primer_apellido = request.POST['primer_apellido']
+                documento.segundo_apellido = request.POST['segundo_apellido']
+                documento.celular = request.POST['celular']
+                #documento.fijo = request.POST['nombre']
+                documento.email = request.POST['email']
+                documento.direccion = request.POST['direccion']
+                documento.pais = Pais.objects.get(pk = request.POST['pais'])
+                documento.departamento = Departamento.objects.get(pk = request.POST['departamento'])
+                documento.municipio = Municipio.objects.get(pk = request.POST['municipio'])
+                #documento.codigo_postal = request.POST['nombre']
+                #documento.numero_impuesto = request.POST['nombre']
+                #documento.saldo = request.POST['nombre']
+                #documento.termino_pago = request.POST['nombre']
+                documento.save()
+                return JsonResponse({'message' : 'Registro Agregado con Éxito', 'status' : '1'}, status=200)
+        except Exception as e:
+            print(e)
+            return JsonResponse({'message' : 'Error', 'status' : '2'}, status=200)
+
+
 
 def tipo_documento_ver(request):
     item = TipoDocumento.objects.filter(pk=request.POST['dato'])
@@ -467,6 +517,11 @@ def categoria_ver(request):
 
 def marca_ver(request):
     item = Marca.objects.filter(pk=request.POST['dato'])
+    response = serializers.serialize("json", item)
+    return HttpResponse(response, content_type='application/json')
+
+def proveedor_ver(request):
+    item = Proveedor.objects.filter(pk=request.POST['dato'])
     response = serializers.serialize("json", item)
     return HttpResponse(response, content_type='application/json')
 
@@ -683,6 +738,43 @@ def marca_editar(request):
             return JsonResponse({'message' : 'Error', 'status' : '2'}, status=200)
 
 
+def proveedor_editar(request):
+    if request.method == 'GET':
+        return render(request, 'proveedor.html', {
+            'mesage':'Formulario Proveedor',
+            'code':'1'
+            })
+    else:
+        try:
+            nombre_validar = Proveedor.objects.filter(numero_documento=request.POST['numero_documento_editar'])
+            if nombre_validar.exists():
+                return JsonResponse({'message' : 'Ya existe un registro con el Número Documento de Proveedor: ' + str(request.POST['numero_documento_editar']), 'status' : '0'}, status=200)
+            else:
+                documento = Proveedor.objects.get(pk=request.POST['pk_editar'])
+                documento.tipo_proveedor = TipoProveedor.objects.get(pk = request.POST['tipo_proveedor_editar'])
+                documento.tipo_documento = TipoDocumento.objects.get(pk = request.POST['tipo_documento_editar'])
+                documento.numero_documento = request.POST['numero_documento_editar']
+                documento.primer_nombre = request.POST['primer_nombre_editar']
+                documento.segundo_nombre = request.POST['segundo_nombre_editar']
+                documento.primer_apellido = request.POST['primer_apellido_editar']
+                documento.segundo_apellido = request.POST['segundo_apellido_editar']
+                documento.celular = request.POST['celular_editar']
+                #documento.fijo = request.POST['nombre']
+                documento.email = request.POST['email_editar']
+                documento.direccion = request.POST['direccion_editar']
+                documento.pais = Pais.objects.get(pk = request.POST['pais_editar'])
+                documento.departamento = Departamento.objects.get(pk = request.POST['departamento_editar'])
+                documento.municipio = Municipio.objects.get(pk = request.POST['municipio_editar'])
+                #documento.codigo_postal = request.POST['nombre']
+                #documento.numero_impuesto = request.POST['nombre']
+                #documento.saldo = request.POST['nombre']
+                #documento.termino_pago = request.POST['nombre']
+                documento.save()
+                return JsonResponse({'message' : 'Registro Actualizado con exito', 'status' : '1'}, status=200)
+        except ValueError:
+            return JsonResponse({'message' : 'Error', 'status' : '2'}, status=200)
+
+
 def tipo_documento_borrar(request):
     try:
         item = TipoDocumento.objects.get(pk=request.POST['dato'])
@@ -798,6 +890,18 @@ def marca_borrar(request):
         return JsonResponse({'message' : 'Registro eliminado con exito', 'status' : '1'}, status=200)
     except ValueError:
         return render(request, 'marca.html', {
+                'mesage':'Error',
+                'code':'3'
+                })
+
+
+def proveedor_borrar(request):
+    try:
+        item = Proveedor.objects.get(pk=request.POST['dato'])
+        item.delete()
+        return JsonResponse({'message' : 'Registro eliminado con exito', 'status' : '1'}, status=200)
+    except ValueError:
+        return render(request, 'proveedor.html', {
                 'mesage':'Error',
                 'code':'3'
                 })

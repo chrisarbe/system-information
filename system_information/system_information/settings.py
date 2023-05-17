@@ -80,7 +80,7 @@ DATABASES = {
         'NAME': 'postgres',
         'USER': 'postgres',
         'PASSWORD': 'Chris7255$',
-        'HOST': '104.197.101.154',
+        'HOST': 'orbit-django.cofryckwevhl.us-east-1.rds.amazonaws.com',
         'PORT': 5432,
     }
 }

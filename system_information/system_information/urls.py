@@ -23,7 +23,6 @@ urlpatterns = [
     path('dashboard/', views.dashboard, name='dashboard'),
     path('login/', views.login_user, name='login'),
     path('logout/', views.signout, name='logout'),
-    path('proveedores/', views.proveedores, name='proveedores'),
     # Tipo de Documento
     path('tipo_documento/', views.tipo_documento, name='tipo_documento'),
     path('tipo_documento/agregar/', views.tipo_documento_agregar, name='tipo_documento_agregar'),
@@ -84,6 +83,12 @@ urlpatterns = [
     path('marca/ver/', views.marca_ver, name='marca_ver'),
     path('marca/editar/', views.marca_editar, name='marca_editar'),
     path('marca/borrar/', views.marca_borrar, name='marca_borrar'),
+    # Proveedor
+    path('proveedor/', views.proveedor, name='proveedor'),
+    path('proveedor/agregar/', views.proveedor_agregar, name='proveedor_agregar'),
+    path('proveedor/ver/', views.proveedor_ver, name='proveedor_ver'),
+    path('proveedor/editar/', views.proveedor_editar, name='proveedor_editar'),
+    path('proveedor/borrar/', views.proveedor_borrar, name='proveedor_borrar'),
     # Documentacion
     path('documentacion/', views.documentacion, name='documentacion'),
     path('documentacion_maestros_tecnico/', views.documentacion_maestros_tecnico, name='documentacion_maestros_tecnico'),
