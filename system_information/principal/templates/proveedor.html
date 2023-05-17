@@ -1,0 +1,628 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+<div class="page-content">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="row">
+                    <div class="card-header">
+                        <a href="#" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#agregar_proveedor">Añadir</a>
+                        <!-- Modal Adicionar Proveedor -->
+                        <div class="modal fade text-left w-100" id="agregar_proveedor" tabindex="-1"
+                        role="dialog" aria-labelledby="myModalLabel16" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl"
+                                role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title" id="myModalLabel16">Agregar Proveedor</h4>
+                                        <button type="button" class="close" data-bs-dismiss="modal"
+                                            aria-label="Close">
+                                            <i data-feather="x"></i>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="form">
+                                            <div class="row">
+                                                <div class="col-md-4 mb-12">
+                                                    <label for="tipo-proveedor-columna">Tipo de Proveedor</label>
+                                                    <fieldset class="form-group">
+                                                        <select class="form-select" id="tipo_proveedor" name="tipo_proveedor">
+                                                            {% for x in tipos_proveedor %}
+                                                            <option value="{{ x.pk }}">{{ x.nombre }}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-4 mb-12">
+                                                    <label for="tipo-documento-columna">Tipo de Documento</label>
+                                                    <fieldset class="form-group">
+                                                        <select class="form-select" id="tipo_documento" name="tipo_documento">
+                                                            {% for x in tipos_documento %}
+                                                            <option value="{{ x.pk }}">{{ x.nombre }}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-4 col-12">
+                                                    <div class="form-group">
+                                                        <h6><label for="first-name-column">Número de Documento</label><h6>
+                                                        <input type="text" id="numero_documento" class="form-control"
+                                                            placeholder="Número de Documento" name="numero_documento">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-3 col-12">
+                                                    <div class="form-group">
+                                                        <label for="primer-nombre-column">Primer Nombre</label>
+                                                        <input type="text" id="primer_nombre" class="form-control"
+                                                            placeholder="Primer Nombre" name="primer_nombre">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 col-12">
+                                                    <div class="form-group">
+                                                        <label for="segundo-nombre-column">Segundo Nombre</label>
+                                                        <input type="text" id="segundo_nombre" class="form-control"
+                                                            placeholder="Segundo Nombre" name="segundo_nombre">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 col-12">
+                                                    <div class="form-group">
+                                                        <label for="primer-apellido-column">Primer Apellido</label>
+                                                        <input type="text" id="primer_apellido" class="form-control"
+                                                            placeholder="Primer Apellido" name="primer_apellido">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 col-12">
+                                                    <div class="form-group">
+                                                        <label for="segundo-apellido-column">Segundo Apellido</label>
+                                                        <input type="text" id="segundo_apellido" class="form-control"
+                                                            name="segundo_apellido" placeholder="Segundo Apellido">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 col-12">
+                                                    <div class="form-group">
+                                                        <label for="celular-column">Teléfono Celular</label>
+                                                        <input type="text" id="celular" class="form-control"
+                                                            name="celular" placeholder="Teléfono Celular">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 col-12">
+                                                    <div class="form-group">
+                                                        <label for="fijo-column">Teléfono Fijo</label>
+                                                        <input type="text" id="fijo" class="form-control"
+                                                            name="fijo" placeholder="Teléfono Fijo">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for="email-column">Correo Electrónico</label>
+                                                        <input type="text" id="email" class="form-control"
+                                                            name="email" placeholder="Email">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12 col-12">
+                                                    <div class="form-group">
+                                                        <label for="direccion-column">Dirección</label>
+                                                        <input type="text" id="direccion" class="form-control"
+                                                            name="direccion" placeholder="Dirección">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 mb-12">
+                                                    <label for="pais-columna">Pais</label>
+                                                    <fieldset class="form-group">
+                                                        <select class="form-select" id="pais" name="pais">
+                                                            {% for x in paises %}
+                                                            <option value="{{ x.pk }}">{{ x.nombre }}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-3 mb-12">
+                                                    <label for="departamento-columna">Departamento</label>
+                                                    <fieldset class="form-group">
+                                                        <select class="form-select" id="departamento" name="departamento">
+                                                            {% for x in departamentos %}
+                                                            <option value="{{ x.pk }}">{{ x.nombre }}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-3 mb-12">
+                                                    <label for="municipio-columna">Municipio</label>
+                                                    <fieldset class="form-group">
+                                                        <select class="form-select" id="municipio" name="municipio">
+                                                            {% for x in municipios %}
+                                                            <option value="{{ x.pk }}">{{ x.nombre }}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-3 col-12">
+                                                    <div class="form-group">
+                                                        <label for="codigo-postl-column">Código Postal</label>
+                                                        <input type="text" id="codigo_postal" class="form-control"
+                                                            name="codigo_postal" placeholder="Código Postal">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4 col-12">
+                                                    <div class="form-group">
+                                                        <label for="numero-impuesto-column">Número de Impuesto</label>
+                                                        <input type="text" id="numero_impuesto" class="form-control"
+                                                            name="numero_impuesto" placeholder="Número de Impuesto">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 col-12">
+                                                    <div class="form-group">
+                                                        <label for="saldo-column">Saldo</label>
+                                                        <input type="text" id="saldo" class="form-control"
+                                                            name="saldo" placeholder="Saldo">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 mb-12">
+                                                    <label for="termino-pago-columna">Términos de Pago</label>
+                                                    <fieldset class="form-group">
+                                                        <select class="form-select" id="termino_pago" name="termino_pago">
+                                                            {% for x in terminos_pago %}
+                                                            <option value="{{ x.pk }}">{{ x.nombre }}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12 d-flex justify-content-end">
+                                                    <button type="submit"
+                                                        class="btn btn-primary me-1 mb-1" onclick="proveedor_agregar()">Guardar</button>
+                                                    <button type="reset"
+                                                        class="btn btn-light-secondary me-1 mb-1">Reiniciar</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-light-secondary"
+                                            data-bs-dismiss="modal">
+                                            <i class="bx bx-x d-block d-sm-none"></i>
+                                            <span class="d-none d-sm-block">Cerrar</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="section">
+        <div class="card">
+            <div class="card-header col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                Lista de Datos
+            </div>
+            <div class="card-body">
+                <table class="table table-striped" id="table1">
+                    <thead>
+                        <tr>
+                            <th>Proveedor</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for x in lista %}
+                        <tr>
+                            <td>{{ x.numero_documento }} - {{ x.primer_nombre }} {{ x.primer_apellido }}</td>
+                            <td>
+                                <div class="btn-group me-1 mb-1">
+                                    <div class="dropdown">
+                                        <button type="button" class="btn btn-secondary dropdown-toggle"
+                                            data-bs-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false">
+                                            Acciones
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-end">
+                                            <a class="dropdown-item" href="#" onclick="proveedor_ver('{{x.id}}')">Ver</a>
+                                            <a class="dropdown-item" href="#" onclick="proveedor_editar('{{x.id}}')">Editar</a>
+                                            <a class="dropdown-item" href="#" onclick="proveedor_borrar('{{x.id}}')">Borrar</a>
+                                        </div>
+                                        <!-- Modal Ver Proveedor -->
+                                        <div class="modal fade text-left w-100" id="ver_proveedor" tabindex="-1"
+                                        role="dialog" aria-labelledby="myModalLabel16" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl"
+                                                role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title" id="myModalLabel16">Ver Proveedor</h4>
+                                                        <button type="button" class="close" data-bs-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <i data-feather="x"></i>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form class="form">
+                                                            <div class="row">
+                                                                <div class="col-md-4 mb-12">
+                                                                    <label for="tipo-proveedor-columna">Tipo de Proveedor</label>
+                                                                    <fieldset class="form-group">
+                                                                        <select class="form-select" id="tipo_proveedor_ver" name="tipo_proveedor_ver">
+                                                                            {% for x in tipos_proveedor %}
+                                                                            <option value="{{ x.pk }}">{{ x.nombre }}</option>
+                                                                            {% endfor %}
+                                                                        </select>
+                                                                    </fieldset>
+                                                                </div>
+                                                                <div class="col-md-4 mb-12">
+                                                                    <label for="tipo-documento-columna">Tipo de Documento</label>
+                                                                    <fieldset class="form-group">
+                                                                        <select class="form-select" id="tipo_documento_ver" name="tipo_documento_ver">
+                                                                            {% for x in tipos_documento %}
+                                                                            <option value="{{ x.pk }}">{{ x.nombre }}</option>
+                                                                            {% endfor %}
+                                                                        </select>
+                                                                    </fieldset>
+                                                                </div>
+                                                                <div class="col-md-4 col-12">
+                                                                    <div class="form-group">
+                                                                        <h6><label for="first-name-column">Número de Documento</label><h6>
+                                                                        <input type="text" id="numero_documento_ver" class="form-control"
+                                                                            placeholder="Número de Documento" name="numero_documento_ver">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-3 col-12">
+                                                                    <div class="form-group">
+                                                                        <label for="primer-nombre-column">Primer Nombre</label>
+                                                                        <input type="text" id="primer_nombre_ver" class="form-control"
+                                                                            placeholder="Primer Nombre" name="primer_nombre_ver">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3 col-12">
+                                                                    <div class="form-group">
+                                                                        <label for="segundo-nombre-column">Segundo Nombre</label>
+                                                                        <input type="text" id="segundo_nombre_ver" class="form-control"
+                                                                            placeholder="Segundo Nombre" name="segundo_nombre_ver">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3 col-12">
+                                                                    <div class="form-group">
+                                                                        <label for="primer-apellido-column">Primer Apellido</label>
+                                                                        <input type="text" id="primer_apellido_ver" class="form-control"
+                                                                            placeholder="Primer Apellido" name="primer_apellido_ver">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3 col-12">
+                                                                    <div class="form-group">
+                                                                        <label for="segundo-apellido-column">Segundo Apellido</label>
+                                                                        <input type="text" id="segundo_apellido_ver" class="form-control"
+                                                                            name="segundo_apellido_ver" placeholder="Segundo Apellido">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3 col-12">
+                                                                    <div class="form-group">
+                                                                        <label for="celular-column">Teléfono Celular</label>
+                                                                        <input type="text" id="celular_ver" class="form-control"
+                                                                            name="celular_ver" placeholder="Teléfono Celular">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3 col-12">
+                                                                    <div class="form-group">
+                                                                        <label for="fijo-column">Teléfono Fijo</label>
+                                                                        <input type="text" id="fijo_ver" class="form-control"
+                                                                            name="fijo_ver" placeholder="Teléfono Fijo">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6 col-12">
+                                                                    <div class="form-group">
+                                                                        <label for="email-column">Correo Electrónico</label>
+                                                                        <input type="text" id="email_ver" class="form-control"
+                                                                            name="email_ver" placeholder="Email">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-12 col-12">
+                                                                    <div class="form-group">
+                                                                        <label for="direccion-column">Dirección</label>
+                                                                        <input type="text" id="direccion_ver" class="form-control"
+                                                                            name="direccion_ver" placeholder="Dirección">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3 mb-12">
+                                                                    <label for="pais-columna">Pais</label>
+                                                                    <fieldset class="form-group">
+                                                                        <select class="form-select" id="pais_ver" name="pais_ver">
+                                                                            {% for x in paises %}
+                                                                            <option value="{{ x.pk }}">{{ x.nombre }}</option>
+                                                                            {% endfor %}
+                                                                        </select>
+                                                                    </fieldset>
+                                                                </div>
+                                                                <div class="col-md-3 mb-12">
+                                                                    <label for="departamento-columna">Departamento</label>
+                                                                    <fieldset class="form-group">
+                                                                        <select class="form-select" id="departamento_ver" name="departamento_ver">
+                                                                            {% for x in departamentos %}
+                                                                            <option value="{{ x.pk }}">{{ x.nombre }}</option>
+                                                                            {% endfor %}
+                                                                        </select>
+                                                                    </fieldset>
+                                                                </div>
+                                                                <div class="col-md-3 mb-12">
+                                                                    <label for="municipio-columna">Municipio</label>
+                                                                    <fieldset class="form-group">
+                                                                        <select class="form-select" id="municipio_ver" name="municipio_ver">
+                                                                            {% for x in municipios %}
+                                                                            <option value="{{ x.pk }}">{{ x.nombre }}</option>
+                                                                            {% endfor %}
+                                                                        </select>
+                                                                    </fieldset>
+                                                                </div>
+                                                                <div class="col-md-3 col-12">
+                                                                    <div class="form-group">
+                                                                        <label for="codigo-postl-column">Código Postal</label>
+                                                                        <input type="text" id="codigo_postal_ver" class="form-control"
+                                                                            name="codigo_postal_ver" placeholder="Código Postal">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-4 col-12">
+                                                                    <div class="form-group">
+                                                                        <label for="numero-impuesto-column">Número de Impuesto</label>
+                                                                        <input type="text" id="numero_impuesto_ver" class="form-control"
+                                                                            name="numero_impuesto_ver" placeholder="Número de Impuesto">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4 col-12">
+                                                                    <div class="form-group">
+                                                                        <label for="saldo-column">Saldo</label>
+                                                                        <input type="text" id="saldo_ver" class="form-control"
+                                                                            name="saldo_ver" placeholder="Saldo">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4 mb-12">
+                                                                    <label for="termino-pago-columna">Términos de Pago</label>
+                                                                    <fieldset class="form-group">
+                                                                        <select class="form-select" id="termino_pago_ver" name="termino_pago_ver">
+                                                                            {% for x in terminos_pago %}
+                                                                            <option value="{{ x.pk }}">{{ x.nombre }}</option>
+                                                                            {% endfor %}
+                                                                        </select>
+                                                                    </fieldset>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-12 d-flex justify-content-end">
+                                                                    <button type="reset"
+                                                                        class="btn btn-light-secondary me-1 mb-1">Reiniciar</button>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-light-secondary"
+                                                            data-bs-dismiss="modal">
+                                                            <i class="bx bx-x d-block d-sm-none"></i>
+                                                            <span class="d-none d-sm-block">Cerrar</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Modal Editar Proveedor -->
+                                        <div class="modal fade text-left w-100" id="editar_proveedor" tabindex="-1"
+                                        role="dialog" aria-labelledby="myModalLabel16" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl"
+                                                role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title" id="myModalLabel16">Editar Proveedor</h4>
+                                                        <button type="button" class="close" data-bs-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <i data-feather="x"></i>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form class="form">
+                                                            <div class="row">
+                                                                <div class="col-md-4 mb-12">
+                                                                    <input type="hidden" id="pk_editar" class="form-control" name="pk_editar" value="...">
+                                                                    <label for="tipo-proveedor-columna">Tipo de Proveedor</label>
+                                                                    <fieldset class="form-group">
+                                                                        <select class="form-select" id="tipo_proveedor_editar" name="tipo_proveedor_editar">
+                                                                            {% for x in tipos_proveedor %}
+                                                                            <option value="{{ x.pk }}">{{ x.nombre }}</option>
+                                                                            {% endfor %}
+                                                                        </select>
+                                                                    </fieldset>
+                                                                </div>
+                                                                <div class="col-md-4 mb-12">
+                                                                    <label for="tipo-documento-columna">Tipo de Documento</label>
+                                                                    <fieldset class="form-group">
+                                                                        <select class="form-select" id="tipo_documento_editar" name="tipo_documento_editar">
+                                                                            {% for x in tipos_documento %}
+                                                                            <option value="{{ x.pk }}">{{ x.nombre }}</option>
+                                                                            {% endfor %}
+                                                                        </select>
+                                                                    </fieldset>
+                                                                </div>
+                                                                <div class="col-md-4 col-12">
+                                                                    <div class="form-group">
+                                                                        <h6><label for="first-name-column">Número de Documento</label><h6>
+                                                                        <input type="text" id="numero_documento_editar" class="form-control"
+                                                                            placeholder="Número de Documento" name="numero_documento_editar">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-3 col-12">
+                                                                    <div class="form-group">
+                                                                        <label for="primer-nombre-column">Primer Nombre</label>
+                                                                        <input type="text" id="primer_nombre_editar" class="form-control"
+                                                                            placeholder="Primer Nombre" name="primer_nombre_editar">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3 col-12">
+                                                                    <div class="form-group">
+                                                                        <label for="segundo-nombre-column">Segundo Nombre</label>
+                                                                        <input type="text" id="segundo_nombre_editar" class="form-control"
+                                                                            placeholder="Segundo Nombre" name="segundo_nombre_editar">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3 col-12">
+                                                                    <div class="form-group">
+                                                                        <label for="primer-apellido-column">Primer Apellido</label>
+                                                                        <input type="text" id="primer_apellido_editar" class="form-control"
+                                                                            placeholder="Primer Apellido" name="primer_apellido_editar">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3 col-12">
+                                                                    <div class="form-group">
+                                                                        <label for="segundo-apellido-column">Segundo Apellido</label>
+                                                                        <input type="text" id="segundo_apellido_editar" class="form-control"
+                                                                            name="segundo_apellido" placeholder="Segundo Apellido_editar">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3 col-12">
+                                                                    <div class="form-group">
+                                                                        <label for="celular-column">Teléfono Celular</label>
+                                                                        <input type="text" id="celular_editar" class="form-control"
+                                                                            name="celular_editar" placeholder="Teléfono Celular">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3 col-12">
+                                                                    <div class="form-group">
+                                                                        <label for="fijo-column">Teléfono Fijo</label>
+                                                                        <input type="text" id="fijo_editar" class="form-control"
+                                                                            name="fijo_editar" placeholder="Teléfono Fijo">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6 col-12">
+                                                                    <div class="form-group">
+                                                                        <label for="email-column">Correo Electrónico</label>
+                                                                        <input type="text" id="email_editar" class="form-control"
+                                                                            name="email_editar" placeholder="Email">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-12 col-12">
+                                                                    <div class="form-group">
+                                                                        <label for="direccion-column">Dirección</label>
+                                                                        <input type="text" id="direccion_editar" class="form-control"
+                                                                            name="direccion_editar" placeholder="Dirección">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3 mb-12">
+                                                                    <label for="pais-columna">Pais</label>
+                                                                    <fieldset class="form-group">
+                                                                        <select class="form-select" id="pais_editar" name="pais_editar">
+                                                                            {% for x in paises %}
+                                                                            <option value="{{ x.pk }}">{{ x.nombre }}</option>
+                                                                            {% endfor %}
+                                                                        </select>
+                                                                    </fieldset>
+                                                                </div>
+                                                                <div class="col-md-3 mb-12">
+                                                                    <label for="departamento-columna">Departamento</label>
+                                                                    <fieldset class="form-group">
+                                                                        <select class="form-select" id="departamento_editar" name="departamento_editar">
+                                                                            {% for x in departamentos %}
+                                                                            <option value="{{ x.pk }}">{{ x.nombre }}</option>
+                                                                            {% endfor %}
+                                                                        </select>
+                                                                    </fieldset>
+                                                                </div>
+                                                                <div class="col-md-3 mb-12">
+                                                                    <label for="municipio-columna">Municipio</label>
+                                                                    <fieldset class="form-group">
+                                                                        <select class="form-select" id="municipio_editar" name="municipio_editar">
+                                                                            {% for x in municipios %}
+                                                                            <option value="{{ x.pk }}">{{ x.nombre }}</option>
+                                                                            {% endfor %}
+                                                                        </select>
+                                                                    </fieldset>
+                                                                </div>
+                                                                <div class="col-md-3 col-12">
+                                                                    <div class="form-group">
+                                                                        <label for="codigo-postl-column">Código Postal</label>
+                                                                        <input type="text" id="codigo_postal_editar" class="form-control"
+                                                                            name="codigo_postal_editar" placeholder="Código Postal">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-4 col-12">
+                                                                    <div class="form-group">
+                                                                        <label for="numero-impuesto-column">Número de Impuesto</label>
+                                                                        <input type="text" id="numero_impuesto_editar" class="form-control"
+                                                                            name="numero_impuesto_editar" placeholder="Número de Impuesto">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4 col-12">
+                                                                    <div class="form-group">
+                                                                        <label for="saldo-column">Saldo</label>
+                                                                        <input type="text" id="saldo_editar" class="form-control"
+                                                                            name="saldo_editar" placeholder="Saldo">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4 mb-12">
+                                                                    <label for="termino-pago-columna">Términos de Pago</label>
+                                                                    <fieldset class="form-group">
+                                                                        <select class="form-select" id="termino_pago_editar" name="termino_pago_editar">
+                                                                            {% for x in terminos_pago %}
+                                                                            <option value="{{ x.pk }}">{{ x.nombre }}</option>
+                                                                            {% endfor %}
+                                                                        </select>
+                                                                    </fieldset>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                        <div class="row">
+                                                            <div class="col-12 d-flex justify-content-end">
+                                                                <button
+                                                                    class="btn btn-primary me-1 mb-1" onclick="proveedor_editar_guardar()">Guardar</button>
+                                                                <button type="reset"
+                                                                    class="btn btn-light-secondary me-1 mb-1">Reiniciar</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-light-secondary"
+                                                            data-bs-dismiss="modal">
+                                                            <i class="bx bx-x d-block d-sm-none"></i>
+                                                            <span class="d-none d-sm-block">Cerrar</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</div>
+{% block javascripts %}
+    <script src="{% static 'js/apps/proveedor.js' %}"></script>
+    <script src="{% static 'vendors/simple-datatables/simple-datatables.js' %}"></script>
+    <script>
+        // Simple Datatable
+        let table1 = document.querySelector('#table1');
+        let dataTable = new simpleDatatables.DataTable(table1);
+    </script>
+{% endblock javascripts %}
+{% endblock %}
