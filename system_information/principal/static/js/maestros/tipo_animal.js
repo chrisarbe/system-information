@@ -1,13 +1,13 @@
 window.onload = function() {
-	document.getElementById("menu_pos").setAttribute("class", "submenu active");
-    document.getElementById("menu_pos_2").setAttribute("class", "submenu active");
-    document.getElementById("menu_caja").setAttribute("class", "submenu-item active");
+	document.getElementById("menu_categorizacion").setAttribute("class", "submenu active");
+    document.getElementById("menu_animales").setAttribute("class", "submenu active");
+    document.getElementById("menu_tipo_animal").setAttribute("class", "submenu-item active");
 };
-/*
-function tipo_proveedor_borrar(pk) {
+
+function tipo_animal_borrar(pk) {
     const csrftoken = getCookie('csrftoken');
     $.ajax({
-        url: '/tipo_proveedor/borrar/',
+        url: '/tipo_animal/borrar/',
         type: 'POST',
         headers:{"X-CSRFToken": csrftoken },
         data: { 
@@ -24,7 +24,7 @@ function tipo_proveedor_borrar(pk) {
                     icon: "success",
                     title: data.message,
                     confirmButtonColor: '#81D4FA',
-                    confirmButtonText: '<a href="/tipo_proveedor/">Aceptar</a>'
+                    confirmButtonText: '<a href="/tipo_animal/">Aceptar</a>'
                 });
             }
         }
@@ -35,46 +35,46 @@ function reiniciar_formulario(){
 	$("#nombre").val("");
 }
 
-function tipo_proveedor_ver(pk) {
+function tipo_animal_ver(pk) {
     const csrftoken = getCookie('csrftoken');
     $.ajax({
-        url: '/tipo_proveedor/ver/',
+        url: '/tipo_animal/ver/',
         type: 'POST',
         headers:{"X-CSRFToken": csrftoken },
         data: { 
             dato:pk
         },
         success: function (data) {
-            $("#nombre_ver").val(data[0].fields.nombre);
+            $("#descripcion_ver").val(data[0].fields.descripcion);
         }
     }).always(function() {
-        $('#ver_tipo_proveedor').modal('show');
+        $('#ver_tipo_animal').modal('show');
        });
 }
 
-function tipo_proveedor_editar(pk) {
+function tipo_animal_editar(pk) {
     const csrftoken = getCookie('csrftoken');
     $.ajax({
-        url: '/tipo_proveedor/ver/',
+        url: '/tipo_animal/ver/',
         type: 'POST',
         headers:{"X-CSRFToken": csrftoken },
         data: { 
             dato:pk
         },
         success: function (data) {
-            $("#nombre_editar").val(data[0].fields.nombre);
+            $("#descripcion_editar").val(data[0].fields.descripcion);
             $("#pk_editar").val(data[0].pk);
         }
     }).always(function() {
-        $('#editar_tipo_proveedor').modal('show');
+        $('#editar_tipo_animal').modal('show');
        });
 }
 
-function tipo_proveedor_editar_guardar() {
+function tipo_animal_editar_guardar() {
     const csrftoken = getCookie('csrftoken');
-    var nombre = $("#nombre_editar").val();
-	if (nombre == "") {
-		$( "#nombre_editar" ).addClass( "is-invalid" );
+    var descripcion = $("#descripcion_editar").val();
+	if (descripcion == "") {
+		$( "#descripcion_editar" ).addClass( "is-invalid" );
 		Swal.fire({
             icon: "error",
             title: "Los campos no pueden estar vacios",
@@ -83,28 +83,28 @@ function tipo_proveedor_editar_guardar() {
         });
 	}else{
         $.ajax({
-            url: '/tipo_proveedor/editar/',
+            url: '/tipo_animal/editar/',
             type: 'POST',
             headers:{"X-CSRFToken": csrftoken },
             data: { 
                 pk_editar:document.getElementById("pk_editar").value,
-                nombre_editar:document.getElementById("nombre_editar").value
+                descripcion_editar:document.getElementById("descripcion_editar").value
             },
             success: function (data) {
-                $('#editar_tipo_proveedor').modal('hide');
                 if (data.status == "1"){
+                    $('#editar_tipo_animal').modal('hide');
                     Swal.fire({
                         icon: "success",
                         title: data.message,
                         confirmButtonColor: '#81D4FA',
-                        confirmButtonText: '<a href="/tipo_proveedor/">Aceptar</a>'
+                        confirmButtonText: '<a href="/tipo_animal/">Aceptar</a>'
                     });
                 } else {
                     Swal.fire({
                         icon: "error",
                         title: data.message,
                         confirmButtonColor: '#81D4FA',
-                        confirmButtonText: '<a href="/tipo_proveedor/">Aceptar</a>'
+                        confirmButtonText: 'Aceptar'
                     });
                 }
                 
@@ -113,11 +113,11 @@ function tipo_proveedor_editar_guardar() {
     }
 }
 
-function tipo_proveedor_agregar() {
+function tipo_animal_agregar() {
     const csrftoken = getCookie('csrftoken');
-	var nombre = $("#nombre").val();
-	if (nombre == "") {
-		$( "#nombre" ).addClass( "is-invalid" );
+	var descripcion = $("#descripcion").val();
+	if (descripcion == "") {
+		$( "#descripcion" ).addClass( "is-invalid" );
 		Swal.fire({
             icon: "error",
             title: "Los campos no pueden estar vacios",
@@ -126,27 +126,27 @@ function tipo_proveedor_agregar() {
         });
 	}else{
         $.ajax({
-            url: '/tipo_proveedor/agregar/',
+            url: '/tipo_animal/agregar/',
             type: 'POST',
             headers:{"X-CSRFToken": csrftoken },
             data: { 
-                nombre:document.getElementById("nombre").value
+                descripcion:document.getElementById("descripcion").value
             },
             success: function (data) {
-                $('#agregar_tipo_proveedor').modal('hide');
+                $('#agregar_tipo_animal').modal('hide');
                 if (data.status == "1"){
                     Swal.fire({
                         icon: "success",
                         title: data.message,
                         confirmButtonColor: '#81D4FA',
-                        confirmButtonText: '<a href="/tipo_proveedor/">Aceptar</a>'
+                        confirmButtonText: '<a href="/tipo_animal/">Aceptar</a>'
                     });
                 } else {
                     Swal.fire({
                         icon: "error",
                         title: data.message,
                         confirmButtonColor: '#81D4FA',
-                        confirmButtonText: '<a href="/tipo_proveedor/">Aceptar</a>'
+                        confirmButtonText: '<a href="/tipo_animal/">Aceptar</a>'
                     });
                 }
                 
@@ -169,4 +169,4 @@ function getCookie(name) {
         }
     }
     return cookieValue;
-}*/
+}

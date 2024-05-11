@@ -58,6 +58,17 @@ def tipo_documento(request):
     else:
         return render(request, 'login.html')
 
+def tipo_animal(request):
+    if request.user.is_authenticated:
+        lista = TipoAnimal.objects.all()
+        return render(request, 'tipo_animal.html', {
+            'title':'Tipo de Animal',
+            'subtitle':'Administración de Tipo de Animales',
+            'lista':lista
+        })
+    else:
+        return render(request, 'login.html')
+
 
 def tipo_proveedor(request):
     if request.user.is_authenticated:
@@ -226,6 +237,26 @@ def tipo_documento_agregar(request):
                 'code':'3'
                 })
 
+def tipo_animal_agregar(request):
+    if request.method == 'GET':
+        return render(request, 'tipo_animal.html', {
+            'mesage':'Formulario Tipo de Animal',
+            'code':'1'
+            })
+    else:
+        try:
+            descripcion_validar = TipoAnimal.objects.filter(descripcion=request.POST['descripcion'])
+            if descripcion_validar.exists():
+                return JsonResponse({'message' : 'Ya existe un registro con el descripcion de Animal: ' + str(request.POST['descripcion']), 'status' : '0'}, status=200)
+            else:
+                animal = TipoAnimal(descripcion=request.POST['descripcion'])
+                animal.save()
+                return JsonResponse({'message' : 'Registro Agregado con Éxito', 'status' : '1'}, status=200)
+        except ValueError:
+            return render(request, 'tipo_animal.html', {
+                'mesage':'Error',
+                'code':'3'
+                })
 
 def tipo_proveedor_agregar(request):
     if request.method == 'GET':
@@ -474,6 +505,10 @@ def tipo_documento_ver(request):
     response = serializers.serialize("json", item)
     return HttpResponse(response, content_type='application/json')
 
+def tipo_animal_ver(request):
+    item = TipoAnimal.objects.filter(pk=request.POST['dato'])
+    response = serializers.serialize("json", item)
+    return HttpResponse(response, content_type='application/json')
 
 def tipo_proveedor_ver(request):
     item = TipoProveedor.objects.filter(pk=request.POST['dato'])
@@ -550,6 +585,25 @@ def tipo_documento_editar(request):
                 'code':'3'
                 })"""
 
+def tipo_animal_editar(request):
+    if request.method == 'GET':
+        return render(request, 'tipo_animal.html', {
+            'mesage':'Formulario Tipo de Animal',
+            'code':'1'
+            })
+    else:
+        try:
+            descripcion_validar = TipoAnimal.objects.filter(descripcion=request.POST['descripcion_editar'])
+            if descripcion_validar.exists():
+                return JsonResponse({'message' : 'Ya existe un registro con el nombre de Animal: ' + str(request.POST['descripcion_editar']), 'status' : '0'}, status=200)
+            else:
+                animal = TipoAnimal.objects.get(pk=request.POST['pk_editar'])
+                animal.descripcion = request.POST['descripcion_editar']
+                animal.save()
+                #return redirect('/tipo_documento/', {'mesage': 'Registro Actualizado con Éxito', 'code':'2'})
+                return JsonResponse({'message' : 'Registro Actualizado con exito', 'status' : '1'}, status=200)
+        except ValueError:
+            return JsonResponse({'message' : 'Error', 'status' : '2'}, status=200)
 
 def tipo_proveedor_editar(request):
     if request.method == 'GET':
@@ -787,6 +841,17 @@ def tipo_documento_borrar(request):
                 'code':'3'
                 })
 
+def tipo_animal_borrar(request):
+    try:
+        item = TipoAnimal.objects.get(pk=request.POST['dato'])
+        item.delete()
+        return JsonResponse({'message' : 'Registro eliminado con exito', 'status' : '1'}, status=200)
+        #return redirect('/tipo_documento/', {'mesage': 'Registro Borrado con Éxito', 'code':'2'})
+    except ValueError:
+        return render(request, 'tipo_animal.html', {
+                'mesage':'Error',
+                'code':'3'
+                })
 
 def tipo_proveedor_borrar(request):
     try:

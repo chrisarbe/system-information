@@ -94,4 +94,10 @@ urlpatterns = [
     path('documentacion_maestros_tecnico/', views.documentacion_maestros_tecnico, name='documentacion_maestros_tecnico'),
     # Documentacion
     path('administracion_pos_caja/', views.administracion_pos_caja, name='administracion_pos_caja'),
+    # Tipo de Documento
+    path('tipo_animal/', views.tipo_animal, name='tipo_animal'),
+    path('tipo_animal/agregar/', views.tipo_animal_agregar, name='tipo_animal_agregar'),
+    path('tipo_animal/ver/', views.tipo_animal_ver, name='tipo_animal_ver'),
+    path('tipo_animal/editar/', views.tipo_animal_editar, name='tipo_animal_editar'),
+    path('tipo_animal/borrar/', views.tipo_animal_borrar, name='tipo_animal_borrar'),
 ]

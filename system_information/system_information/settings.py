@@ -77,10 +77,10 @@ WSGI_APPLICATION = 'system_information.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
+        'NAME': 'django_project',
         'USER': 'postgres',
         'PASSWORD': 'Chris7255$',
-        'HOST': 'orbit-django.cofryckwevhl.us-east-1.rds.amazonaws.com',
+        'HOST': 'localhost',
         'PORT': 5432,
     }
 }

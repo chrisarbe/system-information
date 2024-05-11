@@ -195,8 +195,7 @@
                             <ul id="menu_categorizacion" class="submenu">
                                 <li class="sidebar-item  has-sub">
                                     <a href="#" class='sidebar-link'>
-                                        <i class="bi bi-tags-fill"></i>
-                                        <span>Categorización</span>
+                                        <span>&#128278; Categorización</span>
                                     </a>
                                     <ul id="menu_categorizacion_2" class="submenu">
                                         <li id="menu_tipo_documento" class="submenu-item">
@@ -215,8 +214,7 @@
                                 </li>
                                 <li class="sidebar-item  has-sub">
                                     <a href="#" class='sidebar-link'>
-                                        <i class="bi bi-geo-fill"></i>
-                                        <span>Geografía</span>
+                                        <span>&#127758; Geografía</span>
                                     </a>
                                     <ul id="menu_geografia" class="submenu ">
                                         <li id="menu_pais" class="submenu-item ">
@@ -232,8 +230,7 @@
                                 </li>
                                 <li class="sidebar-item  has-sub">
                                     <a href="#" class='sidebar-link'>
-                                        <i class="bi bi-signpost-split-fill"></i>
-                                        <span>Productos</span>
+                                        <span>&#128230; Productos</span>
                                     </a>
                                     <ul id="menu_categorizacion_3" class="submenu">
                                         <li id="menu_unidad" class="submenu-item">
@@ -256,6 +253,19 @@
                                         </li>
                                     </ul>
                                 </li>
+                                <li class="sidebar-item  has-sub">
+                                    <a href="#" class='sidebar-link'>
+                                        <span>&#128062; Animales</span>
+                                    </a>
+                                    <ul id="menu_animales" class="submenu">
+                                        <li id="menu_tipo_animal" class="submenu-item">
+                                            <a href="{% url 'tipo_animal' %}">Tipo Animal</a>
+                                        </li>
+                                        <li id="menu_raza_animal" class="submenu-item ">
+                                            <a href="#">Raza Animal</a>
+                                        </li>
+                                    </ul>
+                                </li>
                             </ul>
                         </li>
 
@@ -266,17 +276,16 @@
                                 <i class="bi bi-briefcase-fill"></i>
                                 <span>Administración</span>
                             </a>
-                            <ul id="menu_pos" class="submenu ">
+                            <ul id="menu_pos" class="submenu">
                                 <li class="sidebar-item  has-sub">
                                     <a href="#" class='sidebar-link'>
-                                        <i class="bi bi-shop"></i>
-                                        <span>POS</span>
+                                        <span>&#127978; POS</span>
                                     </a>
-                                    <ul id="menu_pos_2" class="submenu ">
-                                        <li class="submenu-item ">
+                                    <ul id="menu_pos_2" class="submenu">
+                                        <li id="menu_caja" class="submenu-item">
                                             <a href="{% url 'administracion_pos_caja' %}">Caja</a>
                                         </li>
-                                        <li id="menu_proveedor" class="submenu-item ">
+                                        <li id="menu_proveedor" class="submenu-item">
                                             <a href="{% url 'proveedor' %}">Proveedor</a>
                                         </li>
                                         <li class="submenu-item ">
@@ -299,13 +308,13 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="submenu-item ">
+                                <li class="submenu-item">
                                     <a href="#">Cartera</a>
                                 </li>
-                                <li class="submenu-item ">
+                                <li class="submenu-item">
                                     <a href="#">Presupuesto</a>
                                 </li>
-                                <li class="submenu-item ">
+                                <li class="submenu-item">
                                     <a href="#">Proyectos</a>
                                 </li>
                             </ul>
@@ -317,14 +326,77 @@
                                 <span>Agroindustria</span>
                             </a>
                             <ul class="submenu ">
-                                <li class="submenu-item ">
-                                    <a href="#">Ganadería</a>
+                                <li class="submenu-item">
+                                    <li class="sidebar-item  has-sub">
+                                        <a href="#" class='sidebar-link'>
+                                            <span>&#128046; Ganadería</span>
+                                        </a>
+                                        <ul id="menu_pos_2" class="submenu">
+                                            <li id="menu_caja" class="submenu-item">
+                                                <a href="#">Cria</a>
+                                            </li>
+                                            <li id="menu_proveedor" class="submenu-item">
+                                                <a href="#">Levante</a>
+                                            </li>
+                                            <li class="submenu-item ">
+                                                <a href="#">Ceba</a>
+                                            </li>
+                                        </ul>
+                                    </li>
                                 </li>
-                                <li class="submenu-item ">
-                                    <a href="#">Porcicultura</a>
+                                <li class="submenu-item">
+                                    <li class="sidebar-item  has-sub">
+                                        <a href="#" class='sidebar-link'>
+                                            <span>&#128055; Porcicultura</span>
+                                        </a>
+                                        <ul id="menu_pos_2" class="submenu">
+                                            <li id="menu_caja" class="submenu-item">
+                                                <a href="#">Cria</a>
+                                            </li>
+                                            <li id="menu_proveedor" class="submenu-item">
+                                                <a href="#">Levante</a>
+                                            </li>
+                                            <li class="submenu-item ">
+                                                <a href="#">Ceba</a>
+                                            </li>
+                                        </ul>
+                                    </li>
                                 </li>
-                                <li class="submenu-item ">
-                                    <a href="#">Avicultura</a>
+                                <li class="submenu-item">
+                                    <li class="sidebar-item  has-sub">
+                                        <a href="#" class='sidebar-link'>
+                                            <span>&#128020; Avicultura</span>
+                                        </a>
+                                        <ul id="menu_pos_2" class="submenu">
+                                            <li id="menu_caja" class="submenu-item">
+                                                <a href="#">Cria</a>
+                                            </li>
+                                            <li id="menu_proveedor" class="submenu-item">
+                                                <a href="#">Levante</a>
+                                            </li>
+                                            <li class="submenu-item ">
+                                                <a href="#">Ceba</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </li>
+                                <li class="submenu-item">
+                                    <li class="sidebar-item  has-sub">
+                                        <a href="#" class='sidebar-link'>
+                                            <span>&#128031; Pisicultura</span>
+                                        </a>
+                                        <ul id="menu_pos_2" class="submenu">
+                                            <li id="menu_caja" class="submenu-item">
+                                                <a href="#">Cria</a>
+                                            </li>
+                                            <li id="menu_proveedor" class="submenu-item">
+                                                <a href="#">Levante</a>
+                                            </li>
+                                            <li class="submenu-item ">
+                                                <a href="#">Ceba</a>
+                                            </li>
+                                        </ul>
+                                    </li>
                                 </li>
                             </ul>
                         </li>
@@ -335,8 +407,20 @@
                                 <span>Gastronomía</span>
                             </a>
                             <ul class="submenu ">
-                                <li class="submenu-item ">
-                                    <a href="#">Restaurantes</a>
+                                <li class="submenu-item">
+                                    <li class="sidebar-item  has-sub">
+                                        <a href="#" class='sidebar-link'>
+                                            <span>&#127860; Restaurantes</span>
+                                        </a>
+                                        <ul id="menu_pos_2" class="submenu">
+                                            <li id="menu_caja" class="submenu-item">
+                                                <a href="#">Pedidos</a>
+                                            </li>
+                                            <li id="menu_proveedor" class="submenu-item">
+                                                <a href="#">Mesas</a>
+                                            </li>
+                                        </ul>
+                                    </li>
                                 </li>
                             </ul>
                         </li>
@@ -349,22 +433,37 @@
                                 <span>Mi Oficina</span>
                             </a>
                             <ul class="submenu ">
-                                <li class="submenu-item ">
+                                <li class="submenu-item">
+                                    <li class="sidebar-item  has-sub">
+                                        <a href="#" class='sidebar-link'>
+                                            <span>&#129520; Herramientas</span>
+                                        </a>
+                                        <ul id="menu_pos_2" class="submenu">
+                                            <li id="menu_caja" class="submenu-item">
+                                                <a href="#">Calculadora</a>
+                                            </li>
+                                            <li id="menu_proveedor" class="submenu-item">
+                                                <a href="#">Convertidor de Moneda</a>
+                                            </li>
+                                            <li class="submenu-item ">
+                                                <a href="#">TRM</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </li>
+                                <li class="submenu-item">
                                     <a href="#">Mi Agenda</a>
                                 </li>
-                                <li class="submenu-item ">
+                                <li class="submenu-item">
                                     <a href="#">Mi Correo</a>
                                 </li>
-                                <li class="submenu-item ">
-                                    <a href="#">Mis Herramientas</a>
-                                </li>
-                                <li class="submenu-item ">
+                                <li class="submenu-item">
                                     <a href="#">Módulo de Vencimientos</a>
                                 </li>
                             </ul>
                         </li>
 
-                        <li class="sidebar-item  ">
+                        <li class="sidebar-item">
                             <a href="#" class='sidebar-link'>
                                 <i class="bi bi-calendar-week"></i>
                                 <span>Calendario</span>
@@ -380,7 +479,7 @@
                             </a>
                         </li>
 
-                        <li class="sidebar-item  ">
+                        <li class="sidebar-item">
                             <a href="#" class='sidebar-link'>
                                 <i class="bi bi-eyeglasses"></i>
                                 <span>Mesa de Servicio</span>

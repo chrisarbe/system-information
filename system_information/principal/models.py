@@ -128,3 +128,38 @@ class ModuloVencimientos(models.Model):
 
     def __str__(self):
         return self.referencia
+    
+# Dato Maestro
+class TipoAnimal(models.Model):
+    descripcion=models.CharField(max_length=20)
+
+# Dato Maestro
+class RazaAnimal(models.Model):
+    descripcion=models.CharField(max_length=20)
+
+# Dato Maestro
+class EstadoProductivoAnimal(models.Model):
+    descripcion=models.CharField(max_length=20)
+
+class EstadoCorporalAnimal(models.Model):
+    peso=models.FloatField()
+    altura=models.FloatField()
+    estato=models.BooleanField()
+
+class Lactancia(models.Model):
+    fecha_parto=models.DateField()
+
+class Servicio(models.Model):
+    fecha_celo=models.DateField()
+    fecha_inseminacion=models.DateField()
+    dosis_seminal=models.FloatField()
+
+class Animal(models.Model):
+    tipo_animal=models.ForeignKey(TipoAnimal, on_delete=models.CASCADE)
+    raza_animal=models.ForeignKey(RazaAnimal, on_delete=models.CASCADE)
+    estado_corporal_animal=models.ForeignKey(EstadoCorporalAnimal, on_delete=models.CASCADE)
+    nombre=models.CharField(max_length=20)
+    fecha_nacimiento=models.DateField()
+
+    def __str__(self):
+        return self.nombre
