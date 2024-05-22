@@ -1,6 +1,5 @@
 FROM ubuntu:18.04
-ADD . /app
-WORKDIR /app
+ADD . .
 RUN apt-get update
 RUN apt-get install -y python3
 RUN apt-get install -y python3-pip
