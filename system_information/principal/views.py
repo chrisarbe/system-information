@@ -69,6 +69,27 @@ def tipo_animal(request):
     else:
         return render(request, 'login.html')
 
+def raza_animal(request):
+    if request.user.is_authenticated:
+        lista = RazaAnimal.objects.all()
+        return render(request, 'raza_animal.html', {
+            'title':'Raza de Animal',
+            'subtitle':'Administración de Raza de Animales',
+            'lista':lista
+        })
+    else:
+        return render(request, 'login.html')
+    
+def estado_productivo_animal(request):
+    if request.user.is_authenticated:
+        lista = EstadoProductivoAnimal.objects.all()
+        return render(request, 'estado_productivo_animal.html', {
+            'title':'Estado Productivo de Animal',
+            'subtitle':'Administración de Estado Productivo de Animales',
+            'lista':lista
+        })
+    else:
+        return render(request, 'login.html')
 
 def tipo_proveedor(request):
     if request.user.is_authenticated:
@@ -254,6 +275,48 @@ def tipo_animal_agregar(request):
                 return JsonResponse({'message' : 'Registro Agregado con Éxito', 'status' : '1'}, status=200)
         except ValueError:
             return render(request, 'tipo_animal.html', {
+                'mesage':'Error',
+                'code':'3'
+                })
+
+def raza_animal_agregar(request):
+    if request.method == 'GET':
+        return render(request, 'raza_animal.html', {
+            'mesage':'Formulario Raza de Animal',
+            'code':'1'
+            })
+    else:
+        try:
+            descripcion_validar = RazaAnimal.objects.filter(descripcion=request.POST['descripcion'])
+            if descripcion_validar.exists():
+                return JsonResponse({'message' : 'Ya existe un registro con la descripcion de Raza de Animal: ' + str(request.POST['descripcion']), 'status' : '0'}, status=200)
+            else:
+                animal = RazaAnimal(descripcion=request.POST['descripcion'])
+                animal.save()
+                return JsonResponse({'message' : 'Registro Agregado con Éxito', 'status' : '1'}, status=200)
+        except ValueError:
+            return render(request, 'raza_animal.html', {
+                'mesage':'Error',
+                'code':'3'
+                })
+        
+def estado_productivo_animal_agregar(request):
+    if request.method == 'GET':
+        return render(request, 'estado_productivo_animal.html', {
+            'mesage':'Formulario Estado Productivo de Animal',
+            'code':'1'
+            })
+    else:
+        try:
+            descripcion_validar = EstadoProductivoAnimal.objects.filter(descripcion=request.POST['descripcion'])
+            if descripcion_validar.exists():
+                return JsonResponse({'message' : 'Ya existe un registro con la descripcion de Estado Productivo de Animal: ' + str(request.POST['descripcion']), 'status' : '0'}, status=200)
+            else:
+                animal = EstadoProductivoAnimal(descripcion=request.POST['descripcion'])
+                animal.save()
+                return JsonResponse({'message' : 'Registro Agregado con Éxito', 'status' : '1'}, status=200)
+        except ValueError:
+            return render(request, 'estado_productivo_animal.html', {
                 'mesage':'Error',
                 'code':'3'
                 })
@@ -510,6 +573,16 @@ def tipo_animal_ver(request):
     response = serializers.serialize("json", item)
     return HttpResponse(response, content_type='application/json')
 
+def raza_animal_ver(request):
+    item = RazaAnimal.objects.filter(pk=request.POST['dato'])
+    response = serializers.serialize("json", item)
+    return HttpResponse(response, content_type='application/json')
+
+def estado_productivo_animal_ver(request):
+    item = EstadoProductivoAnimal.objects.filter(pk=request.POST['dato'])
+    response = serializers.serialize("json", item)
+    return HttpResponse(response, content_type='application/json')
+
 def tipo_proveedor_ver(request):
     item = TipoProveedor.objects.filter(pk=request.POST['dato'])
     response = serializers.serialize("json", item)
@@ -598,6 +671,46 @@ def tipo_animal_editar(request):
                 return JsonResponse({'message' : 'Ya existe un registro con el nombre de Animal: ' + str(request.POST['descripcion_editar']), 'status' : '0'}, status=200)
             else:
                 animal = TipoAnimal.objects.get(pk=request.POST['pk_editar'])
+                animal.descripcion = request.POST['descripcion_editar']
+                animal.save()
+                #return redirect('/tipo_documento/', {'mesage': 'Registro Actualizado con Éxito', 'code':'2'})
+                return JsonResponse({'message' : 'Registro Actualizado con exito', 'status' : '1'}, status=200)
+        except ValueError:
+            return JsonResponse({'message' : 'Error', 'status' : '2'}, status=200)
+        
+def raza_animal_editar(request):
+    if request.method == 'GET':
+        return render(request, 'raza_animal.html', {
+            'mesage':'Formulario Raza de Animal',
+            'code':'1'
+            })
+    else:
+        try:
+            descripcion_validar = RazaAnimal.objects.filter(descripcion=request.POST['descripcion_editar'])
+            if descripcion_validar.exists():
+                return JsonResponse({'message' : 'Ya existe un registro con la raza de Animal: ' + str(request.POST['descripcion_editar']), 'status' : '0'}, status=200)
+            else:
+                animal = RazaAnimal.objects.get(pk=request.POST['pk_editar'])
+                animal.descripcion = request.POST['descripcion_editar']
+                animal.save()
+                #return redirect('/tipo_documento/', {'mesage': 'Registro Actualizado con Éxito', 'code':'2'})
+                return JsonResponse({'message' : 'Registro Actualizado con exito', 'status' : '1'}, status=200)
+        except ValueError:
+            return JsonResponse({'message' : 'Error', 'status' : '2'}, status=200)
+
+def estado_productivo_animal_editar(request):
+    if request.method == 'GET':
+        return render(request, 'estado_productivo_animal.html', {
+            'mesage':'Formulario Estado Productivo de Animal',
+            'code':'1'
+            })
+    else:
+        try:
+            descripcion_validar = EstadoProductivoAnimal.objects.filter(descripcion=request.POST['descripcion_editar'])
+            if descripcion_validar.exists():
+                return JsonResponse({'message' : 'Ya existe un registro con estado productivo de Animal: ' + str(request.POST['descripcion_editar']), 'status' : '0'}, status=200)
+            else:
+                animal = EstadoProductivoAnimal.objects.get(pk=request.POST['pk_editar'])
                 animal.descripcion = request.POST['descripcion_editar']
                 animal.save()
                 #return redirect('/tipo_documento/', {'mesage': 'Registro Actualizado con Éxito', 'code':'2'})
@@ -849,6 +962,30 @@ def tipo_animal_borrar(request):
         #return redirect('/tipo_documento/', {'mesage': 'Registro Borrado con Éxito', 'code':'2'})
     except ValueError:
         return render(request, 'tipo_animal.html', {
+                'mesage':'Error',
+                'code':'3'
+                })
+    
+def raza_animal_borrar(request):
+    try:
+        item = RazaAnimal.objects.get(pk=request.POST['dato'])
+        item.delete()
+        return JsonResponse({'message' : 'Registro eliminado con exito', 'status' : '1'}, status=200)
+        #return redirect('/tipo_documento/', {'mesage': 'Registro Borrado con Éxito', 'code':'2'})
+    except ValueError:
+        return render(request, 'raza_animal.html', {
+                'mesage':'Error',
+                'code':'3'
+                })
+    
+def estado_productivo_animal_borrar(request):
+    try:
+        item = EstadoProductivoAnimal.objects.get(pk=request.POST['dato'])
+        item.delete()
+        return JsonResponse({'message' : 'Registro eliminado con exito', 'status' : '1'}, status=200)
+        #return redirect('/tipo_documento/', {'mesage': 'Registro Borrado con Éxito', 'code':'2'})
+    except ValueError:
+        return render(request, 'estado_productivo_animal.html', {
                 'mesage':'Error',
                 'code':'3'
                 })

@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="{% static 'vendors/toastify/toastify.css' %}">
     <link rel="stylesheet" href="{% static 'vendors/sweetalert2/sweetalert2.min.css' %}">
     <link rel="stylesheet" href="{% static 'vendors/simple-datatables/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/widgets/calc.css' %}">
 </head>
 
 <body>
@@ -262,7 +263,10 @@
                                             <a href="{% url 'tipo_animal' %}">Tipo Animal</a>
                                         </li>
                                         <li id="menu_raza_animal" class="submenu-item ">
-                                            <a href="#">Raza Animal</a>
+                                            <a href="{% url 'raza_animal' %}">Raza Animal</a>
+                                        </li>
+                                        <li id="menu_estado_productivo_animal" class="submenu-item ">
+                                            <a href="{% url 'estado_productivo_animal' %}">Estado Productivo Animal</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -440,7 +444,8 @@
                                         </a>
                                         <ul id="menu_pos_2" class="submenu">
                                             <li id="menu_caja" class="submenu-item">
-                                                <a href="#">Calculadora</a>
+                                                <a href="#" data-bs-toggle="modal"
+                                                data-bs-target="#tool_calculator">Calculadora</a>
                                             </li>
                                             <li id="menu_proveedor" class="submenu-item">
                                                 <a href="#">Convertidor de Moneda</a>
@@ -524,6 +529,65 @@
                     </div>
                 </div>
             </div>
+            <!-- Modal Tool Calculator -->
+            <div class="modal fade text-left w-100" id="tool_calculator" tabindex="-1"
+            role="dialog" aria-labelledby="myModalLabel16" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal"
+                    role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="myModalLabel16">Calculadora</h4>
+                            <button type="button" class="close" data-bs-dismiss="modal"
+                                aria-label="Close">
+                                <i data-feather="x"></i>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="calculator card">
+
+                                <input type="text" class="calculator-screen z-depth-1" value="" disabled />
+                              
+                                <div class="calculator-keys">
+                              
+                                  <button  type="button" data-mdb-button-init class="operator btn btn-info" value="+">+</button>
+                                  <button  type="button" data-mdb-button-init class="operator btn btn-info" value="-">-</button>
+                                  <button  type="button" data-mdb-button-init class="operator btn btn-info" value="*">&times;</button>
+                                  <button  type="button" data-mdb-button-init class="operator btn btn-info" value="/">&divide;</button>
+                              
+                                  <button  type="button" data-mdb-button-init value="7" data-mdb-ripple-init class="btn btn-light waves-effect">7</button>
+                                  <button  type="button" data-mdb-button-init value="8" data-mdb-ripple-init class="btn btn-light waves-effect">8</button>
+                                  <button  type="button" data-mdb-button-init value="9" data-mdb-ripple-init class="btn btn-light waves-effect">9</button>
+                              
+                              
+                                  <button  type="button" data-mdb-button-init value="4" data-mdb-ripple-init class="btn btn-light waves-effect">4</button>
+                                  <button  type="button" data-mdb-button-init value="5" data-mdb-ripple-init class="btn btn-light waves-effect">5</button>
+                                  <button  type="button" data-mdb-button-init value="6" data-mdb-ripple-init class="btn btn-light waves-effect">6</button>
+                              
+                              
+                                  <button  type="button" data-mdb-button-init value="1" data-mdb-ripple-init class="btn btn-light waves-effect">1</button>
+                                  <button  type="button" data-mdb-button-init value="2" data-mdb-ripple-init class="btn btn-light waves-effect">2</button>
+                                  <button  type="button" data-mdb-button-init value="3" data-mdb-ripple-init class="btn btn-light waves-effect">3</button>
+                              
+                              
+                                  <button  type="button" data-mdb-button-init value="0" data-mdb-ripple-init class="btn btn-light waves-effect">0</button>
+                                  <button  type="button" data-mdb-button-init class="decimal function btn btn-secondary" value=".">.</button>
+                                  <button  type="button" data-mdb-button-init class="all-clear function btn btn-danger btn-sm" value="all-clear">AC</button>
+                              
+                                  <button  type="button" data-mdb-button-init class="equal-sign operator btn btn-default" value="=">=</button>
+                              
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-light-secondary"
+                                data-bs-dismiss="modal">
+                                <i class="bx bx-x d-block d-sm-none"></i>
+                                <span class="d-none d-sm-block">Cerrar</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             
             {% block content %}
 
@@ -549,6 +613,7 @@
     <script src="{% static 'js/pages/dashboard.js' %}"></script>
 
     <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/widgets/calc.js' %}"></script>
     {% block javascripts %}{% endblock javascripts %}
 </body>
 

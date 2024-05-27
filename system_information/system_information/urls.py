@@ -94,10 +94,22 @@ urlpatterns = [
     path('documentacion_maestros_tecnico/', views.documentacion_maestros_tecnico, name='documentacion_maestros_tecnico'),
     # Documentacion
     path('administracion_pos_caja/', views.administracion_pos_caja, name='administracion_pos_caja'),
-    # Tipo de Documento
+    # Tipo de Animal
     path('tipo_animal/', views.tipo_animal, name='tipo_animal'),
     path('tipo_animal/agregar/', views.tipo_animal_agregar, name='tipo_animal_agregar'),
     path('tipo_animal/ver/', views.tipo_animal_ver, name='tipo_animal_ver'),
     path('tipo_animal/editar/', views.tipo_animal_editar, name='tipo_animal_editar'),
     path('tipo_animal/borrar/', views.tipo_animal_borrar, name='tipo_animal_borrar'),
+    # Raza de Animal
+    path('raza_animal/', views.raza_animal, name='raza_animal'),
+    path('raza_animal/agregar/', views.raza_animal_agregar, name='raza_animal_agregar'),
+    path('raza_animal/ver/', views.raza_animal_ver, name='raza_animal_ver'),
+    path('raza_animal/editar/', views.raza_animal_editar, name='raza_animal_editar'),
+    path('raza_animal/borrar/', views.raza_animal_borrar, name='raza_animal_borrar'),
+    # Estado Productivo de Animal
+    path('estado_productivo_animal/', views.estado_productivo_animal, name='estado_productivo_animal'),
+    path('estado_productivo_animal/agregar/', views.estado_productivo_animal_agregar, name='estado_productivo_animal_agregar'),
+    path('estado_productivo_animal/ver/', views.estado_productivo_animal_ver, name='estado_productivo_animal_ver'),
+    path('estado_productivo_animal/editar/', views.estado_productivo_animal_editar, name='estado_productivo_animal_editar'),
+    path('estado_productivo_animal/borrar/', views.estado_productivo_animal_borrar, name='estado_productivo_animal_borrar'),
 ]
