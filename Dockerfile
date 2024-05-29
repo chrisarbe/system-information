@@ -1,22 +1,16 @@
-# base image  
-FROM python:3.8   
-# setup environment variable  
-ENV DockerHOME=/home/app/webapp  
+# Use an official Python runtime as a parent image
+FROM python:3.8
 
-# set work directory  
-RUN mkdir -p $DockerHOME  
-
-# where your code lives  
-WORKDIR $DockerHOME  
-
-# set environment variables  
+# Set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1  
+ENV PYTHONUNBUFFERED 1
 
-# install dependencies  
-RUN pip install --upgrade pip  
+# Set the working directory
+WORKDIR /app
 
-# copy whole project to your docker home directory. 
-COPY . $DockerHOME  
-# run this command to install all dependencies  
-RUN pip install -r requirements.txt  
+# Install dependencies
+COPY requirements.txt /app/
+RUN pip install -r requirements.txt
+
+# Copy the project code into the container
+COPY . /app/
